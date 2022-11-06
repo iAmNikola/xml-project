@@ -1,0 +1,145 @@
+<zahtev_za_priznanje_ziga institucija="Zavod za intelektualnu svojinu" adresa="Kneginje Ljubice 5, 11000 Beograd">
+  <strana broj_strana="1/2">
+    <ucesnik tip="podnosilac_prijave">
+      <ime></ime>
+      <prezime></prezime>
+      <poslovno_ime></poslovno_ime>
+      <adresa>
+        <ulica></ulica>
+        <broj_ulice></broj_ulice>
+        <postanski_broj></postanski_broj>
+        <mesto></mesto>
+      </adresa>
+      <drzava_prebivalista></drzava_prebivalista>
+      <kontakt>
+        <telefon></telefon>
+        <email></email>
+        <faks></faks>
+      </kontakt>
+    </ucesnik>
+  
+    <ucesnik tip="punomocnik">
+      <ime></ime>
+      <prezime></prezime>
+      <poslovno_ime></poslovno_ime>
+      <adresa>
+        <ulica></ulica>
+        <broj_ulice></broj_ulice>
+        <postanski_broj></postanski_broj>
+        <mesto></mesto>
+      </adresa>
+      <drzava_prebivalista></drzava_prebivalista>
+      <kontakt>
+        <telefon></telefon>
+        <email></email>
+        <faks></faks>
+      </kontakt>
+    </ucesnik>
+  
+    <zajednicki_predstavnik>
+      <kontakt>
+        <telefon></telefon>
+        <email></email>
+        <faks></faks>
+      </kontakt>
+    </zajednicki_predstavnik>
+  
+    <podaci_o_znaku>
+      <tipovi_znaka klasa="a">
+        <tip_znaka tip="induvidualni_zig"></tip_znaka>
+        <tip_znaka tip="kolektivni_zig"></tip_znaka>
+        <tip_znaka tip="zig_garancije"></tip_znaka>
+      </tipovi_znaka>
+      
+      <tipovi_znaka klasa="b">
+        <tip_znaka tip="verbalni_znak"></tip_znaka>
+        <tip_znaka tip="graficki_znak"></tip_znaka>
+        <tip_znaka tip="kombinovani_znak"></tip_znaka>
+        <tip_znaka tip="trodimenzionalni_znak"></tip_znaka>
+        <tip_znaka tip="druga_vrsta_znaka"></tip_znaka>
+      </tipovi_znaka>
+      
+      <izgled_znaka></izgled_znaka>
+  
+      <naznacenje_boje></naznacenje_boje>
+      <transpliteracija_znaka></transpliteracija_znaka>
+      <prevod_znaka></prevod_znaka>
+      <opis_znaka></opis_znaka>
+  
+      <klasa_robe>
+        <klasa vrednost="1"></klasa>
+        <klasa vrednost="2"></klasa>
+        <klasa vrednost="3"></klasa>
+        <klasa vrednost="4"></klasa>
+        <klasa vrednost="5"></klasa>
+        <klasa vrednost="6"></klasa>
+        <klasa vrednost="7"></klasa>
+        <klasa vrednost="8"></klasa>
+        <klasa vrednost="9"></klasa>
+        <klasa vrednost="10"></klasa>
+        <klasa vrednost="11"></klasa>
+        <klasa vrednost="12"></klasa>
+        <klasa vrednost="13"></klasa>
+        <klasa vrednost="14"></klasa>
+        <klasa vrednost="15"></klasa>
+        <klasa vrednost="16"></klasa>
+        <klasa vrednost="17"></klasa>
+        <klasa vrednost="18"></klasa>
+        <klasa vrednost="19"></klasa>
+        <klasa vrednost="20"></klasa>
+        <klasa vrednost="21"></klasa>
+        <klasa vrednost="22"></klasa>
+        <klasa vrednost="23"></klasa>
+        <klasa vrednost="24"></klasa>
+        <klasa vrednost="25"></klasa>
+        <klasa vrednost="26"></klasa>
+        <klasa vrednost="27"></klasa>
+        <klasa vrednost="28"></klasa>
+        <klasa vrednost="29"></klasa>
+        <klasa vrednost="30"></klasa>
+        <klasa vrednost="31"></klasa>
+        <klasa vrednost="32"></klasa>
+        <klasa vrednost="33"></klasa>
+        <klasa vrednost="34"></klasa>
+        <klasa vrednost="35"></klasa>
+        <klasa vrednost="36"></klasa>
+        <klasa vrednost="37"></klasa>
+        <klasa vrednost="38"></klasa>
+        <klasa vrednost="39"></klasa>
+        <klasa vrednost="40"></klasa>
+        <klasa vrednost="41"></klasa>
+        <klasa vrednost="42"></klasa>
+        <klasa vrednost="43"></klasa>
+        <klasa vrednost="44"></klasa>
+        <klasa vrednost="45"></klasa>
+      </klasa_robe>
+      <zatrazeno_pravo_prvenstva_i_osnov></zatrazeno_pravo_prvenstva_i_osnov>
+    </podaci_o_znaku>
+  </strana>
+  
+  <strana broj_strana="2/2">
+    <podaci_o_placanju>
+      <placenje_takse>
+        <osnovna_taksa></osnovna_taksa>
+        <klasa tip=""></klasa>
+        <za_graficko_resenje></za_graficko_resenje>
+        <ukupno></ukupno>
+      </placenje_takse>
+  
+      <potpis_podnosioca_zahteva></potpis_podnosioca_zahteva>
+    </podaci_o_placanju>
+  
+    <podaci_o_zavodu broj_prijave_ziga="" datum_podnosenja="">
+      <prilozi_uz_zahtev>
+        <primerak_znaka></primerak_znaka>
+        <spisak_robe_i_usluga></spisak_robe_i_usluga>
+        <punomocje></punomocje>
+        <generalno_punomocje_ranije_prilozeno></generalno_punomocje_ranije_prilozeno>
+        <opsti_akt_o_kolekticnom_zigu_ili_zigu_garancije></opsti_akt_o_kolekticnom_zigu_ili_zigu_garancije>
+        <dokaz_o_pravu_prvenstva></dokaz_o_pravu_prvenstva>
+        <dokaz_o_uplati_takse></dokaz_o_uplati_takse>
+      </prilozi_uz_zahtev>
+      <broj_prijave_ziga></broj_prijave_ziga>
+    </podaci_o_zavodu>
+  </strana>
+</zahtev_za_priznanje_ziga>
