@@ -1,0 +1,83 @@
+<zahtev_za_priznanje_patenta broj_prijave="" datum_prijema="" datum_podnosenja="">
+  
+  <naziv_pronalaska strana="1/4">
+    <naziv_na_srpskom></naziv_na_srpskom>
+    <naziv_na_engleskom></naziv_na_engleskom>
+  </naziv_pronalaska>
+  
+  <podnosilac strana="1/4" je_pronalazac="" ime="" prezime="" drzavljanstvo="" postoje_dodatni_podnosioci="">
+    <adresa>
+      <ulica></ulica>
+      <broj></broj>
+      <postanski_broj></postanski_broj>
+      <mesto></mesto>
+      <drzava></drzava>
+    </adresa>
+    <kontakt>
+      <broj_telefona></broj_telefona>
+      <broj_faksa></broj_faksa>
+      <e_posta></e_posta>
+    </kontakt>
+  </podnosilac>
+
+  <pronalazac strana="2/4" ne_zeli_da_bude_naveden="" ime="" prezime="" postoje_dodatni_pronalazaci="">
+    <adresa>
+      <ulica></ulica>
+      <broj></broj>
+      <postanski_broj></postanski_broj>
+      <mesto></mesto>
+      <drzava></drzava>
+    </adresa>
+    <kontakt>
+      <broj_telefona></broj_telefona>
+      <broj_faksa></broj_faksa>
+      <e_posta></e_posta>
+    </kontakt>
+  </pronalazac>
+
+  <punomocnik strana="2/4" vrsta_punomocnika="" ime="" prezime="">
+    <adresa>
+      <ulica></ulica>
+      <broj></broj>
+      <postanski_broj></postanski_broj>
+      <mesto></mesto>
+    </adresa>
+    <kontakt>
+      <broj_telefona></broj_telefona>
+      <e_posta></e_posta>
+    </kontakt>
+  </punomocnik>
+
+  <adresa_za_dostavljanje strana="2/4">
+    <ulica></ulica>
+    <broj></broj>
+    <postanski_broj></postanski_broj>
+    <mesto></mesto>
+  </adresa_za_dostavljanje>
+
+  <nacin_dostavljanja strana="2/4">
+    <saglasnost_za_dostavljanje_u_elektronskoj_formi></saglasnost_za_dostavljanje_u_elektronskoj_formi>
+    <saglasnost_za_dostavljanje_u_papirnoj_formi></saglasnost_za_dostavljanje_u_papirnoj_formi>
+  </nacin_dostavljanja>
+
+  <vrsta_prijave strana="2/4" dopunska_prijava="" izdvojena_prijava="">
+    <broj_prvobitne_prijave></broj_prvobitne_prijave>
+    <datum_podnosenja_prvobitne_prijave></datum_podnosenja_prvobitne_prijave>
+  </vrsta_prijave>
+
+  <zahtev_za_priznanje_prvenstva_iz_ranijih_prijava strana="2/4" podaci_o_ostalim_pravima_prvenstva_su_navedeni_u_dodatnom_listu_2="">
+    <lista>
+      <prvi>
+        <datum_podnosenje_ranije_prijave></datum_podnosenje_ranije_prijave>
+        <broj_ranije_prijave></broj_ranije_prijave>
+        <dvoslovna_oznaka_drzave_ili_organizacije></dvoslovna_oznaka_drzave_ili_organizacije>
+      </prvi>
+      <drugi>
+        <datum_podnosenje_ranije_prijave></datum_podnosenje_ranije_prijave>
+        <broj_ranije_prijave></broj_ranije_prijave>
+        <dvoslovna_oznaka_drzave_ili_organizacije></dvoslovna_oznaka_drzave_ili_organizacije>
+      </drugi>
+    </lista>
+  </zahtev_za_priznanje_prvenstva_iz_ranijih_prijava>
+
+</zahtev_za_priznanje_patenta>
