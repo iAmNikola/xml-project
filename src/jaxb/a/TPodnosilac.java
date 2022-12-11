@@ -1,7 +1,6 @@
 
 package jaxb.a;
 
-import java.math.BigInteger;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -21,8 +20,9 @@ import javax.xml.bind.annotation.XmlType;
  *       &lt;sequence>
  *         &lt;element name="Telefon">
  *           &lt;simpleType>
- *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}positiveInteger">
- *               &lt;totalDigits value="12"/>
+ *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *               &lt;minLength value="1"/>
+ *               &lt;maxLength value="12"/>
  *             &lt;/restriction>
  *           &lt;/simpleType>
  *         &lt;/element>
@@ -56,7 +56,7 @@ import javax.xml.bind.annotation.XmlType;
 public abstract class TPodnosilac {
 
     @XmlElement(name = "Telefon", namespace = "http://www.foolstech.com/a1", required = true)
-    protected BigInteger telefon;
+    protected String telefon;
     @XmlElement(name = "Email", namespace = "http://www.foolstech.com/a1", required = true)
     protected String email;
 
@@ -65,10 +65,10 @@ public abstract class TPodnosilac {
      * 
      * @return
      *     possible object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public BigInteger getTelefon() {
+    public String getTelefon() {
         return telefon;
     }
 
@@ -77,10 +77,10 @@ public abstract class TPodnosilac {
      * 
      * @param value
      *     allowed object is
-     *     {@link BigInteger }
+     *     {@link String }
      *     
      */
-    public void setTelefon(BigInteger value) {
+    public void setTelefon(String value) {
         this.telefon = value;
     }
 
