@@ -8,23 +8,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for adresa complex type.
+ * <p>Java class for TAdresa complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="adresa">
+ * &lt;complexType name="TAdresa">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="ulica" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="broj">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *               &lt;pattern value="[0-9]{1,4}[A-Z]?"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
  *         &lt;element name="postanski_broj">
  *           &lt;simpleType>
  *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
@@ -56,23 +49,21 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "adresa", propOrder = {
+@XmlType(name = "TAdresa", namespace = "http://www.foolstech.com/p1", propOrder = {
     "ulica",
-    "broj",
     "postanskiBroj",
     "mesto",
     "drzava"
 })
-public class Adresa {
+public class TAdresa {
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://www.foolstech.com/p1", required = true)
     protected String ulica;
-    @XmlElement(required = true)
-    protected String broj;
-    @XmlElement(name = "postanski_broj", required = true)
+    @XmlElement(name = "postanski_broj", namespace = "http://www.foolstech.com/p1", required = true)
     protected String postanskiBroj;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://www.foolstech.com/p1", required = true)
     protected String mesto;
+    @XmlElement(namespace = "http://www.foolstech.com/p1")
     protected String drzava;
 
     /**
@@ -97,30 +88,6 @@ public class Adresa {
      */
     public void setUlica(String value) {
         this.ulica = value;
-    }
-
-    /**
-     * Gets the value of the broj property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getBroj() {
-        return broj;
-    }
-
-    /**
-     * Sets the value of the broj property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setBroj(String value) {
-        this.broj = value;
     }
 
     /**

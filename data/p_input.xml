@@ -1,15 +1,15 @@
-<zahtev_za_priznanje_patenta broj_prijave="P-123456" datum_prijema="2022-11-12" datum_podnosenja="2022-11-12">
+<zahtev_za_priznanje_patenta xmlns="http://www.foolstech.com/p1"
+                              broj_prijave="P-123456" datum_prijema="2022-11-12" datum_podnosenja="2022-11-12">
   
   <naziv_pronalaska>
     <naziv_na_srpskom>Patent</naziv_na_srpskom>
     <naziv_na_engleskom>Patent</naziv_na_engleskom>
   </naziv_pronalaska>
   
-  <podnosilac je_pronalazac="true">
+  <podnosilac je_pronalazac="true" drzavljanstvo="srpsko">
     <ime>Pera Peric</ime>
     <adresa>
-      <ulica>Puskinova</ulica>
-      <broj>3A</broj>
+      <ulica>Puskinova 61</ulica>
       <postanski_broj>21000</postanski_broj>
       <mesto>Novi Sad</mesto>
       <drzava>Srbija</drzava>
@@ -19,14 +19,12 @@
       <broj_faksa>12345678912</broj_faksa>
       <e_posta>test@gmail.com</e_posta>
     </kontakt>
-    <drzavljanstvo>srpsko</drzavljanstvo>
   </podnosilac>
 
   <pronalazac ne_zeli_da_bude_naveden="true">
     <ime>Pera Peric</ime>
     <adresa>
-      <ulica>Puskinova</ulica>
-      <broj>3A</broj>
+      <ulica>Puskinova 53</ulica>
       <postanski_broj>21000</postanski_broj>
       <mesto>Novi Sad</mesto>
       <drzava>Srbija</drzava>
@@ -42,7 +40,6 @@
     <ime>Sava Savic</ime>
     <adresa>
       <ulica>Cankareva</ulica>
-      <broj>97B</broj>
       <postanski_broj>21000</postanski_broj>
       <mesto>Novi Sad</mesto>
       <drzava>Srbija</drzava>
@@ -56,7 +53,6 @@
 
   <adresa_za_dostavljanje>
     <ulica>Puskinova</ulica>
-    <broj>3A</broj>
     <postanski_broj>21000</postanski_broj>
     <mesto>Novi Sad</mesto>
     <drzava>Srbija</drzava>

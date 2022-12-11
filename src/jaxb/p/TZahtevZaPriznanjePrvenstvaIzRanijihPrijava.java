@@ -10,12 +10,12 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for zahtev_za_priznanje_prvenstva_iz_ranijih_prijava complex type.
+ * <p>Java class for TZahtevZaPriznanjePrvenstvaIzRanijihPrijava complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="zahtev_za_priznanje_prvenstva_iz_ranijih_prijava">
+ * &lt;complexType name="TZahtevZaPriznanjePrvenstvaIzRanijihPrijava">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -44,19 +44,19 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "zahtev_za_priznanje_prvenstva_iz_ranijih_prijava", propOrder = {
+@XmlType(name = "TZahtevZaPriznanjePrvenstvaIzRanijihPrijava", namespace = "http://www.foolstech.com/p1", propOrder = {
     "datumPodnosenjeRanijePrijave",
     "brojRanijePrijave",
     "dvoslovnaOznakaDrzaveIliOrganizacije"
 })
-public class ZahtevZaPriznanjePrvenstvaIzRanijihPrijava {
+public class TZahtevZaPriznanjePrvenstvaIzRanijihPrijava {
 
-    @XmlElement(name = "datum_podnosenje_ranije_prijave", required = true)
+    @XmlElement(name = "datum_podnosenje_ranije_prijave", namespace = "http://www.foolstech.com/p1", required = true)
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar datumPodnosenjeRanijePrijave;
-    @XmlElement(name = "broj_ranije_prijave", required = true)
+    @XmlElement(name = "broj_ranije_prijave", namespace = "http://www.foolstech.com/p1", required = true)
     protected String brojRanijePrijave;
-    @XmlElement(name = "dvoslovna_oznaka_drzave_ili_organizacije", required = true)
+    @XmlElement(name = "dvoslovna_oznaka_drzave_ili_organizacije", namespace = "http://www.foolstech.com/p1", required = true)
     protected String dvoslovnaOznakaDrzaveIliOrganizacije;
 
     /**

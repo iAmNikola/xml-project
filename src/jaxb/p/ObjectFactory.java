@@ -70,11 +70,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Adresa }
+     * Create an instance of {@link TAdresa }
      * 
      */
-    public Adresa createAdresa() {
-        return new Adresa();
+    public TAdresa createTAdresa() {
+        return new TAdresa();
     }
 
     /**
@@ -102,19 +102,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ZahtevZaPriznanjePrvenstvaIzRanijihPrijava }
+     * Create an instance of {@link TOsoba }
      * 
      */
-    public ZahtevZaPriznanjePrvenstvaIzRanijihPrijava createZahtevZaPriznanjePrvenstvaIzRanijihPrijava() {
-        return new ZahtevZaPriznanjePrvenstvaIzRanijihPrijava();
+    public TOsoba createTOsoba() {
+        return new TOsoba();
     }
 
     /**
-     * Create an instance of {@link Kontakt }
+     * Create an instance of {@link TKontakt }
      * 
      */
-    public Kontakt createKontakt() {
-        return new Kontakt();
+    public TKontakt createTKontakt() {
+        return new TKontakt();
+    }
+
+    /**
+     * Create an instance of {@link TZahtevZaPriznanjePrvenstvaIzRanijihPrijava }
+     * 
+     */
+    public TZahtevZaPriznanjePrvenstvaIzRanijihPrijava createTZahtevZaPriznanjePrvenstvaIzRanijihPrijava() {
+        return new TZahtevZaPriznanjePrvenstvaIzRanijihPrijava();
     }
 
 }

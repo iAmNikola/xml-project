@@ -1,20 +1,17 @@
 package jaxb.run;
 
-import jaxb.p.Adresa;
-import jaxb.p.Kontakt;
+import jaxb.p.TAdresa;
+import jaxb.p.TKontakt;
 import jaxb.p.ZahtevZaPriznanjePatenta;
 import jaxb.util.MyValidationEventHandler;
-import org.xml.sax.SAXException;
 
 import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
 public class TestP {
@@ -55,7 +52,7 @@ public class TestP {
             marshaller.marshal(zahtev, new FileOutputStream("./data/p_output.xml"));
 
         } catch (Exception e) {
-            e.printStackTrace();
+
         }
     }
 
@@ -65,12 +62,11 @@ public class TestP {
 
         newPronalazac.setIme("Maja Majic");
         newPronalazac.setNeZeliDaBudeNaveden(false);
-        newPronalazac.setAdresa(new Adresa());
-        newPronalazac.getAdresa().setUlica("Tolstojeva");
-        newPronalazac.getAdresa().setBroj("15");
+        newPronalazac.setAdresa(new TAdresa());
+        newPronalazac.getAdresa().setUlica("Tolstojeva 15");
         newPronalazac.getAdresa().setPostanskiBroj("21000");
         newPronalazac.getAdresa().setMesto("Novi Sad");
-        newPronalazac.setKontakt(new Kontakt());
+        newPronalazac.setKontakt(new TKontakt());
         newPronalazac.getKontakt().setBrojFaksa("+1234567");
         newPronalazac.getKontakt().setBrojTelefona("+381652449815");
         newPronalazac.getKontakt().setEPosta("maja@gmail.com");

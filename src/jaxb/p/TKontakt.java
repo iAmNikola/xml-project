@@ -8,12 +8,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for kontakt complex type.
+ * <p>Java class for TKontakt complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="kontakt">
+ * &lt;complexType name="TKontakt">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -47,18 +47,18 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "kontakt", propOrder = {
+@XmlType(name = "TKontakt", namespace = "http://www.foolstech.com/p1", propOrder = {
     "brojTelefona",
     "brojFaksa",
     "ePosta"
 })
-public class Kontakt {
+public class TKontakt {
 
-    @XmlElement(name = "broj_telefona", required = true)
+    @XmlElement(name = "broj_telefona", namespace = "http://www.foolstech.com/p1", required = true)
     protected String brojTelefona;
-    @XmlElement(name = "broj_faksa", required = true)
+    @XmlElement(name = "broj_faksa", namespace = "http://www.foolstech.com/p1", required = true)
     protected String brojFaksa;
-    @XmlElement(name = "e_posta", required = true)
+    @XmlElement(name = "e_posta", namespace = "http://www.foolstech.com/p1", required = true)
     protected String ePosta;
 
     /**

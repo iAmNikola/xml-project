@@ -38,41 +38,32 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="podnosilac">
  *           &lt;complexType>
  *             &lt;complexContent>
- *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                 &lt;sequence>
- *                   &lt;element name="ime" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *                   &lt;element name="adresa" type="{}adresa"/>
- *                   &lt;element name="kontakt" type="{}kontakt"/>
- *                   &lt;element name="drzavljanstvo" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *                 &lt;/sequence>
+ *               &lt;extension base="{http://www.foolstech.com/p1}TOsoba">
  *                 &lt;attribute name="je_pronalazac" type="{http://www.w3.org/2001/XMLSchema}boolean" />
- *               &lt;/restriction>
+ *                 &lt;attribute name="drzavljanstvo">
+ *                   &lt;simpleType>
+ *                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *                       &lt;pattern value="[A-Za-z ]+"/>
+ *                     &lt;/restriction>
+ *                   &lt;/simpleType>
+ *                 &lt;/attribute>
+ *               &lt;/extension>
  *             &lt;/complexContent>
  *           &lt;/complexType>
  *         &lt;/element>
  *         &lt;element name="pronalazac">
  *           &lt;complexType>
  *             &lt;complexContent>
- *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                 &lt;sequence>
- *                   &lt;element name="ime" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *                   &lt;element name="adresa" type="{}adresa"/>
- *                   &lt;element name="kontakt" type="{}kontakt"/>
- *                 &lt;/sequence>
+ *               &lt;extension base="{http://www.foolstech.com/p1}TOsoba">
  *                 &lt;attribute name="ne_zeli_da_bude_naveden" type="{http://www.w3.org/2001/XMLSchema}boolean" />
- *               &lt;/restriction>
+ *               &lt;/extension>
  *             &lt;/complexContent>
  *           &lt;/complexType>
  *         &lt;/element>
  *         &lt;element name="punomocnik">
  *           &lt;complexType>
  *             &lt;complexContent>
- *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                 &lt;sequence>
- *                   &lt;element name="ime" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *                   &lt;element name="adresa" type="{}adresa"/>
- *                   &lt;element name="kontakt" type="{}kontakt"/>
- *                 &lt;/sequence>
+ *               &lt;extension base="{http://www.foolstech.com/p1}TOsoba">
  *                 &lt;attribute name="vrsta_punomocnika">
  *                   &lt;simpleType>
  *                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
@@ -81,11 +72,11 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *                   &lt;/simpleType>
  *                 &lt;/attribute>
  *                 &lt;attribute name="je_zajednicki_predstavnik" type="{http://www.w3.org/2001/XMLSchema}boolean" />
- *               &lt;/restriction>
+ *               &lt;/extension>
  *             &lt;/complexContent>
  *           &lt;/complexType>
  *         &lt;/element>
- *         &lt;element name="adresa_za_dostavljanje" type="{}adresa"/>
+ *         &lt;element name="adresa_za_dostavljanje" type="{http://www.foolstech.com/p1}TAdresa"/>
  *         &lt;element name="nacin_dostavljanja">
  *           &lt;complexType>
  *             &lt;complexContent>
@@ -123,7 +114,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                 &lt;sequence>
- *                   &lt;element name="zahtev" type="{}zahtev_za_priznanje_prvenstva_iz_ranijih_prijava" maxOccurs="unbounded" minOccurs="0"/>
+ *                   &lt;element name="zahtev" type="{http://www.foolstech.com/p1}TZahtevZaPriznanjePrvenstvaIzRanijihPrijava" maxOccurs="unbounded" minOccurs="0"/>
  *                 &lt;/sequence>
  *               &lt;/restriction>
  *             &lt;/complexContent>
@@ -157,24 +148,24 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "prijava",
     "zahteviZaPriznanjePrvenstvaIzRanijihPrijava"
 })
-@XmlRootElement(name = "zahtev_za_priznanje_patenta")
+@XmlRootElement(name = "zahtev_za_priznanje_patenta", namespace = "http://www.foolstech.com/p1")
 public class ZahtevZaPriznanjePatenta {
 
-    @XmlElement(name = "naziv_pronalaska", required = true)
+    @XmlElement(name = "naziv_pronalaska", namespace = "http://www.foolstech.com/p1", required = true)
     protected ZahtevZaPriznanjePatenta.NazivPronalaska nazivPronalaska;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://www.foolstech.com/p1", required = true)
     protected ZahtevZaPriznanjePatenta.Podnosilac podnosilac;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://www.foolstech.com/p1", required = true)
     protected ZahtevZaPriznanjePatenta.Pronalazac pronalazac;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://www.foolstech.com/p1", required = true)
     protected ZahtevZaPriznanjePatenta.Punomocnik punomocnik;
-    @XmlElement(name = "adresa_za_dostavljanje", required = true)
-    protected Adresa adresaZaDostavljanje;
-    @XmlElement(name = "nacin_dostavljanja", required = true)
+    @XmlElement(name = "adresa_za_dostavljanje", namespace = "http://www.foolstech.com/p1", required = true)
+    protected TAdresa adresaZaDostavljanje;
+    @XmlElement(name = "nacin_dostavljanja", namespace = "http://www.foolstech.com/p1", required = true)
     protected ZahtevZaPriznanjePatenta.NacinDostavljanja nacinDostavljanja;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://www.foolstech.com/p1", required = true)
     protected ZahtevZaPriznanjePatenta.Prijava prijava;
-    @XmlElement(name = "zahtevi_za_priznanje_prvenstva_iz_ranijih_prijava", required = true)
+    @XmlElement(name = "zahtevi_za_priznanje_prvenstva_iz_ranijih_prijava", namespace = "http://www.foolstech.com/p1", required = true)
     protected ZahtevZaPriznanjePatenta.ZahteviZaPriznanjePrvenstvaIzRanijihPrijava zahteviZaPriznanjePrvenstvaIzRanijihPrijava;
     @XmlAttribute(name = "broj_prijave")
     protected String brojPrijave;
@@ -286,10 +277,10 @@ public class ZahtevZaPriznanjePatenta {
      * 
      * @return
      *     possible object is
-     *     {@link Adresa }
+     *     {@link TAdresa }
      *     
      */
-    public Adresa getAdresaZaDostavljanje() {
+    public TAdresa getAdresaZaDostavljanje() {
         return adresaZaDostavljanje;
     }
 
@@ -298,10 +289,10 @@ public class ZahtevZaPriznanjePatenta {
      * 
      * @param value
      *     allowed object is
-     *     {@link Adresa }
+     *     {@link TAdresa }
      *     
      */
-    public void setAdresaZaDostavljanje(Adresa value) {
+    public void setAdresaZaDostavljanje(TAdresa value) {
         this.adresaZaDostavljanje = value;
     }
 
@@ -477,9 +468,9 @@ public class ZahtevZaPriznanjePatenta {
     })
     public static class NacinDostavljanja {
 
-        @XmlElement(name = "saglasnost_za_dostavljanje_u_elektronskoj_formi")
+        @XmlElement(name = "saglasnost_za_dostavljanje_u_elektronskoj_formi", namespace = "http://www.foolstech.com/p1")
         protected boolean saglasnostZaDostavljanjeUElektronskojFormi;
-        @XmlElement(name = "saglasnost_za_dostavljanje_u_papirnoj_formi")
+        @XmlElement(name = "saglasnost_za_dostavljanje_u_papirnoj_formi", namespace = "http://www.foolstech.com/p1")
         protected boolean saglasnostZaDostavljanjeUPapirnojFormi;
 
         /**
@@ -544,9 +535,9 @@ public class ZahtevZaPriznanjePatenta {
     })
     public static class NazivPronalaska {
 
-        @XmlElement(name = "naziv_na_srpskom", required = true)
+        @XmlElement(name = "naziv_na_srpskom", namespace = "http://www.foolstech.com/p1", required = true)
         protected String nazivNaSrpskom;
-        @XmlElement(name = "naziv_na_engleskom", required = true)
+        @XmlElement(name = "naziv_na_engleskom", namespace = "http://www.foolstech.com/p1", required = true)
         protected String nazivNaEngleskom;
 
         /**
@@ -608,15 +599,16 @@ public class ZahtevZaPriznanjePatenta {
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
-     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-     *       &lt;sequence>
-     *         &lt;element name="ime" type="{http://www.w3.org/2001/XMLSchema}string"/>
-     *         &lt;element name="adresa" type="{}adresa"/>
-     *         &lt;element name="kontakt" type="{}kontakt"/>
-     *         &lt;element name="drzavljanstvo" type="{http://www.w3.org/2001/XMLSchema}string"/>
-     *       &lt;/sequence>
+     *     &lt;extension base="{http://www.foolstech.com/p1}TOsoba">
      *       &lt;attribute name="je_pronalazac" type="{http://www.w3.org/2001/XMLSchema}boolean" />
-     *     &lt;/restriction>
+     *       &lt;attribute name="drzavljanstvo">
+     *         &lt;simpleType>
+     *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+     *             &lt;pattern value="[A-Za-z ]+"/>
+     *           &lt;/restriction>
+     *         &lt;/simpleType>
+     *       &lt;/attribute>
+     *     &lt;/extension>
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
@@ -624,95 +616,38 @@ public class ZahtevZaPriznanjePatenta {
      * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
-    @XmlType(name = "", propOrder = {
-        "ime",
-        "adresa",
-        "kontakt",
-        "drzavljanstvo"
-    })
-    public static class Podnosilac {
+    @XmlType(name = "")
+    public static class Podnosilac
+        extends TOsoba
+    {
 
-        @XmlElement(required = true)
-        protected String ime;
-        @XmlElement(required = true)
-        protected Adresa adresa;
-        @XmlElement(required = true)
-        protected Kontakt kontakt;
-        @XmlElement(required = true)
-        protected String drzavljanstvo;
         @XmlAttribute(name = "je_pronalazac")
         protected Boolean jePronalazac;
+        @XmlAttribute(name = "drzavljanstvo")
+        protected String drzavljanstvo;
 
         /**
-         * Gets the value of the ime property.
+         * Gets the value of the jePronalazac property.
          * 
          * @return
          *     possible object is
-         *     {@link String }
+         *     {@link Boolean }
          *     
          */
-        public String getIme() {
-            return ime;
+        public Boolean isJePronalazac() {
+            return jePronalazac;
         }
 
         /**
-         * Sets the value of the ime property.
+         * Sets the value of the jePronalazac property.
          * 
          * @param value
          *     allowed object is
-         *     {@link String }
+         *     {@link Boolean }
          *     
          */
-        public void setIme(String value) {
-            this.ime = value;
-        }
-
-        /**
-         * Gets the value of the adresa property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link Adresa }
-         *     
-         */
-        public Adresa getAdresa() {
-            return adresa;
-        }
-
-        /**
-         * Sets the value of the adresa property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link Adresa }
-         *     
-         */
-        public void setAdresa(Adresa value) {
-            this.adresa = value;
-        }
-
-        /**
-         * Gets the value of the kontakt property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link Kontakt }
-         *     
-         */
-        public Kontakt getKontakt() {
-            return kontakt;
-        }
-
-        /**
-         * Sets the value of the kontakt property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link Kontakt }
-         *     
-         */
-        public void setKontakt(Kontakt value) {
-            this.kontakt = value;
+        public void setJePronalazac(Boolean value) {
+            this.jePronalazac = value;
         }
 
         /**
@@ -737,30 +672,6 @@ public class ZahtevZaPriznanjePatenta {
          */
         public void setDrzavljanstvo(String value) {
             this.drzavljanstvo = value;
-        }
-
-        /**
-         * Gets the value of the jePronalazac property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link Boolean }
-         *     
-         */
-        public Boolean isJePronalazac() {
-            return jePronalazac;
-        }
-
-        /**
-         * Sets the value of the jePronalazac property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link Boolean }
-         *     
-         */
-        public void setJePronalazac(Boolean value) {
-            this.jePronalazac = value;
         }
 
     }
@@ -803,13 +714,13 @@ public class ZahtevZaPriznanjePatenta {
     })
     public static class Prijava {
 
-        @XmlElement(name = "dopunska_prijava")
+        @XmlElement(name = "dopunska_prijava", namespace = "http://www.foolstech.com/p1")
         protected boolean dopunskaPrijava;
-        @XmlElement(name = "izdvojena_prijava")
+        @XmlElement(name = "izdvojena_prijava", namespace = "http://www.foolstech.com/p1")
         protected boolean izdvojenaPrijava;
-        @XmlElement(name = "broj_prvobitne_prijave")
+        @XmlElement(name = "broj_prvobitne_prijave", namespace = "http://www.foolstech.com/p1")
         protected String brojPrvobitnePrijave;
-        @XmlElement(name = "datum_podnosenja_prvobitne_prijave")
+        @XmlElement(name = "datum_podnosenja_prvobitne_prijave", namespace = "http://www.foolstech.com/p1")
         @XmlSchemaType(name = "date")
         protected XMLGregorianCalendar datumPodnosenjaPrvobitnePrijave;
 
@@ -904,14 +815,9 @@ public class ZahtevZaPriznanjePatenta {
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
-     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-     *       &lt;sequence>
-     *         &lt;element name="ime" type="{http://www.w3.org/2001/XMLSchema}string"/>
-     *         &lt;element name="adresa" type="{}adresa"/>
-     *         &lt;element name="kontakt" type="{}kontakt"/>
-     *       &lt;/sequence>
+     *     &lt;extension base="{http://www.foolstech.com/p1}TOsoba">
      *       &lt;attribute name="ne_zeli_da_bude_naveden" type="{http://www.w3.org/2001/XMLSchema}boolean" />
-     *     &lt;/restriction>
+     *     &lt;/extension>
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
@@ -919,93 +825,13 @@ public class ZahtevZaPriznanjePatenta {
      * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
-    @XmlType(name = "", propOrder = {
-        "ime",
-        "adresa",
-        "kontakt"
-    })
-    public static class Pronalazac {
+    @XmlType(name = "")
+    public static class Pronalazac
+        extends TOsoba
+    {
 
-        @XmlElement(required = true)
-        protected String ime;
-        @XmlElement(required = true)
-        protected Adresa adresa;
-        @XmlElement(required = true)
-        protected Kontakt kontakt;
         @XmlAttribute(name = "ne_zeli_da_bude_naveden")
         protected Boolean neZeliDaBudeNaveden;
-
-        /**
-         * Gets the value of the ime property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getIme() {
-            return ime;
-        }
-
-        /**
-         * Sets the value of the ime property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
-         */
-        public void setIme(String value) {
-            this.ime = value;
-        }
-
-        /**
-         * Gets the value of the adresa property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link Adresa }
-         *     
-         */
-        public Adresa getAdresa() {
-            return adresa;
-        }
-
-        /**
-         * Sets the value of the adresa property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link Adresa }
-         *     
-         */
-        public void setAdresa(Adresa value) {
-            this.adresa = value;
-        }
-
-        /**
-         * Gets the value of the kontakt property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link Kontakt }
-         *     
-         */
-        public Kontakt getKontakt() {
-            return kontakt;
-        }
-
-        /**
-         * Sets the value of the kontakt property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link Kontakt }
-         *     
-         */
-        public void setKontakt(Kontakt value) {
-            this.kontakt = value;
-        }
 
         /**
          * Gets the value of the neZeliDaBudeNaveden property.
@@ -1042,12 +868,7 @@ public class ZahtevZaPriznanjePatenta {
      * <pre>
      * &lt;complexType>
      *   &lt;complexContent>
-     *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-     *       &lt;sequence>
-     *         &lt;element name="ime" type="{http://www.w3.org/2001/XMLSchema}string"/>
-     *         &lt;element name="adresa" type="{}adresa"/>
-     *         &lt;element name="kontakt" type="{}kontakt"/>
-     *       &lt;/sequence>
+     *     &lt;extension base="{http://www.foolstech.com/p1}TOsoba">
      *       &lt;attribute name="vrsta_punomocnika">
      *         &lt;simpleType>
      *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
@@ -1056,7 +877,7 @@ public class ZahtevZaPriznanjePatenta {
      *         &lt;/simpleType>
      *       &lt;/attribute>
      *       &lt;attribute name="je_zajednicki_predstavnik" type="{http://www.w3.org/2001/XMLSchema}boolean" />
-     *     &lt;/restriction>
+     *     &lt;/extension>
      *   &lt;/complexContent>
      * &lt;/complexType>
      * </pre>
@@ -1064,95 +885,15 @@ public class ZahtevZaPriznanjePatenta {
      * 
      */
     @XmlAccessorType(XmlAccessType.FIELD)
-    @XmlType(name = "", propOrder = {
-        "ime",
-        "adresa",
-        "kontakt"
-    })
-    public static class Punomocnik {
+    @XmlType(name = "")
+    public static class Punomocnik
+        extends TOsoba
+    {
 
-        @XmlElement(required = true)
-        protected String ime;
-        @XmlElement(required = true)
-        protected Adresa adresa;
-        @XmlElement(required = true)
-        protected Kontakt kontakt;
         @XmlAttribute(name = "vrsta_punomocnika")
         protected String vrstaPunomocnika;
         @XmlAttribute(name = "je_zajednicki_predstavnik")
         protected Boolean jeZajednickiPredstavnik;
-
-        /**
-         * Gets the value of the ime property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link String }
-         *     
-         */
-        public String getIme() {
-            return ime;
-        }
-
-        /**
-         * Sets the value of the ime property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link String }
-         *     
-         */
-        public void setIme(String value) {
-            this.ime = value;
-        }
-
-        /**
-         * Gets the value of the adresa property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link Adresa }
-         *     
-         */
-        public Adresa getAdresa() {
-            return adresa;
-        }
-
-        /**
-         * Sets the value of the adresa property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link Adresa }
-         *     
-         */
-        public void setAdresa(Adresa value) {
-            this.adresa = value;
-        }
-
-        /**
-         * Gets the value of the kontakt property.
-         * 
-         * @return
-         *     possible object is
-         *     {@link Kontakt }
-         *     
-         */
-        public Kontakt getKontakt() {
-            return kontakt;
-        }
-
-        /**
-         * Sets the value of the kontakt property.
-         * 
-         * @param value
-         *     allowed object is
-         *     {@link Kontakt }
-         *     
-         */
-        public void setKontakt(Kontakt value) {
-            this.kontakt = value;
-        }
 
         /**
          * Gets the value of the vrstaPunomocnika property.
@@ -1215,7 +956,7 @@ public class ZahtevZaPriznanjePatenta {
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;sequence>
-     *         &lt;element name="zahtev" type="{}zahtev_za_priznanje_prvenstva_iz_ranijih_prijava" maxOccurs="unbounded" minOccurs="0"/>
+     *         &lt;element name="zahtev" type="{http://www.foolstech.com/p1}TZahtevZaPriznanjePrvenstvaIzRanijihPrijava" maxOccurs="unbounded" minOccurs="0"/>
      *       &lt;/sequence>
      *     &lt;/restriction>
      *   &lt;/complexContent>
@@ -1230,7 +971,8 @@ public class ZahtevZaPriznanjePatenta {
     })
     public static class ZahteviZaPriznanjePrvenstvaIzRanijihPrijava {
 
-        protected List<ZahtevZaPriznanjePrvenstvaIzRanijihPrijava> zahtev;
+        @XmlElement(namespace = "http://www.foolstech.com/p1")
+        protected List<TZahtevZaPriznanjePrvenstvaIzRanijihPrijava> zahtev;
 
         /**
          * Gets the value of the zahtev property.
@@ -1250,13 +992,13 @@ public class ZahtevZaPriznanjePatenta {
          * 
          * <p>
          * Objects of the following type(s) are allowed in the list
-         * {@link ZahtevZaPriznanjePrvenstvaIzRanijihPrijava }
+         * {@link TZahtevZaPriznanjePrvenstvaIzRanijihPrijava }
          * 
          * 
          */
-        public List<ZahtevZaPriznanjePrvenstvaIzRanijihPrijava> getZahtev() {
+        public List<TZahtevZaPriznanjePrvenstvaIzRanijihPrijava> getZahtev() {
             if (zahtev == null) {
-                zahtev = new ArrayList<ZahtevZaPriznanjePrvenstvaIzRanijihPrijava>();
+                zahtev = new ArrayList<TZahtevZaPriznanjePrvenstvaIzRanijihPrijava>();
             }
             return this.zahtev;
         }

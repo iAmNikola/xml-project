@@ -5,7 +5,7 @@
     <naziv_na_engleskom></naziv_na_engleskom>
   </naziv_pronalaska>
   
-  <podnosilac je_pronalazac="">
+  <podnosilac je_pronalazac="" drzavljanstvo="">
     <ime></ime>
     <adresa>
       <ulica></ulica>
@@ -19,7 +19,6 @@
       <broj_faksa></broj_faksa>
       <e_posta></e_posta>
     </kontakt>
-    <drzavljanstvo></drzavljanstvo>
   </podnosilac>
 
   <pronalazac ne_zeli_da_bude_naveden="">
