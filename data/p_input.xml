@@ -1,0 +1,85 @@
+<zahtev_za_priznanje_patenta broj_prijave="P-123456" datum_prijema="2022-11-12" datum_podnosenja="2022-11-12">
+  
+  <naziv_pronalaska>
+    <naziv_na_srpskom>Patent</naziv_na_srpskom>
+    <naziv_na_engleskom>Patent</naziv_na_engleskom>
+  </naziv_pronalaska>
+  
+  <podnosilac je_pronalazac="true">
+    <ime>Pera Peric</ime>
+    <adresa>
+      <ulica>Puskinova</ulica>
+      <broj>3A</broj>
+      <postanski_broj>21000</postanski_broj>
+      <mesto>Novi Sad</mesto>
+      <drzava>Srbija</drzava>
+    </adresa>
+    <kontakt>
+      <broj_telefona>0644368521</broj_telefona>
+      <broj_faksa>12345678912</broj_faksa>
+      <e_posta>test@gmail.com</e_posta>
+    </kontakt>
+    <drzavljanstvo>srpsko</drzavljanstvo>
+  </podnosilac>
+
+  <pronalazac ne_zeli_da_bude_naveden="true">
+    <ime>Pera Peric</ime>
+    <adresa>
+      <ulica>Puskinova</ulica>
+      <broj>3A</broj>
+      <postanski_broj>21000</postanski_broj>
+      <mesto>Novi Sad</mesto>
+      <drzava>Srbija</drzava>
+    </adresa>
+    <kontakt>
+      <broj_telefona>0644368521</broj_telefona>
+      <broj_faksa>12345678912</broj_faksa>
+      <e_posta>test@gmail.com</e_posta>
+    </kontakt>
+  </pronalazac>
+
+  <punomocnik vrsta_punomocnika="zastupanje" je_zajednicki_predstavnik="true">
+    <ime>Sava Savic</ime>
+    <adresa>
+      <ulica>Cankareva</ulica>
+      <broj>97B</broj>
+      <postanski_broj>21000</postanski_broj>
+      <mesto>Novi Sad</mesto>
+      <drzava>Srbija</drzava>
+    </adresa>
+    <kontakt>
+      <broj_telefona>0654362241</broj_telefona>
+      <broj_faksa>12345678912</broj_faksa>
+      <e_posta>sava123@gmail.com</e_posta>
+    </kontakt>
+  </punomocnik>
+
+  <adresa_za_dostavljanje>
+    <ulica>Puskinova</ulica>
+    <broj>3A</broj>
+    <postanski_broj>21000</postanski_broj>
+    <mesto>Novi Sad</mesto>
+    <drzava>Srbija</drzava>
+  </adresa_za_dostavljanje>
+
+  <nacin_dostavljanja>
+    <saglasnost_za_dostavljanje_u_elektronskoj_formi>true</saglasnost_za_dostavljanje_u_elektronskoj_formi>
+    <saglasnost_za_dostavljanje_u_papirnoj_formi>true</saglasnost_za_dostavljanje_u_papirnoj_formi>
+  </nacin_dostavljanja>
+
+  <prijava>
+    <dopunska_prijava>true</dopunska_prijava>
+    <izdvojena_prijava>true</izdvojena_prijava>
+    <broj_prvobitne_prijave>P-123456</broj_prvobitne_prijave>
+    <datum_podnosenja_prvobitne_prijave>2022-11-12</datum_podnosenja_prvobitne_prijave>
+  </prijava>
+
+  <zahtevi_za_priznanje_prvenstva_iz_ranijih_prijava>
+    <zahtev>
+      <datum_podnosenje_ranije_prijave>2022-11-12</datum_podnosenje_ranije_prijave>
+      <broj_ranije_prijave>P-123456</broj_ranije_prijave>
+      <dvoslovna_oznaka_drzave_ili_organizacije>BG</dvoslovna_oznaka_drzave_ili_organizacije>
+    </zahtev>
+  </zahtevi_za_priznanje_prvenstva_iz_ranijih_prijava>
+
+</zahtev_za_priznanje_patenta>
