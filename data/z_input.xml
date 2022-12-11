@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Zahtev_za_priznanje_ziga xmlns="http://www.foolstech.com/z1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.foolstech.com/z1 file:/Users/vladanmikic/Documents/fakultet/semestar7/xml/xml-project/schemas/z_schema.xsd"
+    institucija="Neka ad"
+    broj_prijave="Z-1231/12"
+    datum_podnosenja="2022-11-11">
+    <Podnosilac_prijave xsi:type="TFizicko_lice">
+        <Adresa>
+            <Ulica>Sumska 1</Ulica>
+            <Postanski_broj>32123</Postanski_broj>
+            <Mesto>Novi Sad</Mesto>
+            <Drzava>Srbija</Drzava>
+        </Adresa>
+        <Kontakt>
+            <Telefon>+12312312</Telefon>
+            <Email>nesto@gmail.com</Email>
+            <Faks>Neki faks</Faks>
+        </Kontakt>
+        <Ime>Neko</Ime>
+        <Prezime>Nekic</Prezime>
+    </Podnosilac_prijave>
+    <Podaci_o_znaku>
+        <Tip_ziga tip="individualni_zig"/>
+        <Tip_znaka tip="verbalni_znak"/>
+        <Izgled_znaka putanja="usr/docs/dokument"/>
+        <Naznacenje_boje>plava, zuta, zelena</Naznacenje_boje>
+        <Opis_znaka>Neki opis</Opis_znaka>
+        <Zatrazeno_pravo_prvenstva_i_osnov>Nesstooooo</Zatrazeno_pravo_prvenstva_i_osnov>
+        <Klase>
+            <Klasa>2</Klasa>
+            <Klasa>3</Klasa>
+        </Klase>
+    </Podaci_o_znaku>
+    <Podaci_o_placanju>
+        <Osnovna_taksa>112</Osnovna_taksa>
+        <Taksa_za_klase>1212</Taksa_za_klase>
+        <Taksa_za_graficko_resenje>1212</Taksa_za_graficko_resenje>
+        <Ukupno>12121</Ukupno>
+    </Podaci_o_placanju>
+    <Podaci_o_zavodu>
+        <Primerak_znaka putanja="usr/docs/dokument"/>
+        <Spisak_robe_i_usluge>
+            <Roba_i_usluge klasa="1">
+                <Usluga>nesto</Usluga>
+                <Usluga>nesto drugo, nesto jos, nesto</Usluga>
+            </Roba_i_usluge>
+        </Spisak_robe_i_usluge>
+        <Punomocje putanja="nesto"/>
+        <Generalno_punomocije_ranije_prilozeno>false</Generalno_punomocije_ranije_prilozeno>
+        <Punomocje_ce_biti_naknadno_dostavljeno>true</Punomocje_ce_biti_naknadno_dostavljeno>
+        <Opsti_akt putanja="neka/nesto"/>
+        <Dokaz_o_pravu_prvenstva putanja="neka/nesto"/>
+        <Dokaz_o_uplati_takse putanja="neka/nesto"/>
+    </Podaci_o_zavodu>
+</Zahtev_za_priznanje_ziga>
