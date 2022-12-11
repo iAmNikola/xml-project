@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Zahtev_za_unosenje_u_evidenciju_i_deponovanje_autorskih_dela xmlns="http://www.foolstech.com/a1"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.foolstech.com/a1" broj_prijave="A-0" datum_podnosenja="2006-05-04">
+    <Podnosilac xmlns:a1="http://www.foolstech.com/a1" xsi:type="a1:TPodnosilac_fizicko_lice">
+        <Telefon>50</Telefon>
+        <Email>0@00.AA</Email>
+        <Fizicko_lice>
+            <Ime>Ime0</Ime>
+            <Prezime>Prezime0</Prezime>
+            <Drzavljanstvo>Drzavljanstvo0</Drzavljanstvo>
+            <Adresa>
+                <Grad>Grad0</Grad>
+                <Ulica>Ulica0</Ulica>
+                <Postanski_broj>00000</Postanski_broj>
+            </Adresa>
+        </Fizicko_lice>
+    </Podnosilac>
+    <Naslov>Naslov0</Naslov>
+    <Vrsta_autorskog_dela>Vrsta_autorskog_dela0</Vrsta_autorskog_dela>
+    <Forma_zapisa_autorskog_dela>Forma_zapisa_autorskog_dela0</Forma_zapisa_autorskog_dela>
+    <Autorsko_delo_je_stvoreno_u_radnom_odnosu>false</Autorsko_delo_je_stvoreno_u_radnom_odnosu>
+    <Autorsko_delo file="file1"/>
+</Zahtev_za_unosenje_u_evidenciju_i_deponovanje_autorskih_dela>
