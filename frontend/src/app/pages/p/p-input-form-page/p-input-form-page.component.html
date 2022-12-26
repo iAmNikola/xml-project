@@ -1,0 +1,437 @@
+<div class="w-full bg-slate-200">
+  <div class="flex flex-col justify-center items-center">
+    <form class="w-3/5 p-10 m-10 rounded shadow-md bg-white flex flex-wrap" [formGroup]="inputForm">
+
+      <div class="mb-8 w-full flex items-center justify-center font-bold text-3xl">
+        <h1>Zahtev za priznanje patenta</h1>
+      </div>
+
+      <ng-component formGroupName="naziv_pronalaska">
+        <div class="w-full">
+          <label class="block text-md">Naziv pronalaska na srpskom</label>
+          <input
+            class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+            formControlName="naziv_na_srpskom">
+        </div>
+        <div class="w-full">
+          <label class="block text-md">Naziv pronalaska na engleskom</label>
+          <input
+            class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+            formControlName="naziv_na_engleskom">
+        </div>
+      </ng-component>
+
+      <!---------------------     Podnosilac prijave     ---------------------->
+
+      <div class="w-full flex flex-wrap" formGroupName="podnosilac">
+        <div class="w-full text-xl mb-5">
+          <hr class="my-5 h-px bg-gray-400 border-0">
+          <div class="flex">
+            <div class="w-1/4 font-bold">Podnosilac prijave</div>
+            <div class="flex items-center" formGroupName="@">
+              <input id="je_pronalazac" formControlName="je_pronalazac" type="checkbox" value=""
+                class="w-4 h-4 rounded">
+              <label for="je_pronalazac" class="ml-2 text-sm">Podnosilac prijave je pronalazač</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-2/3 pr-2">
+          <label class="block text-md">
+            Ime i prezime podnosioca / Poslovno ime
+            <span class="text-xs">(prezime i poslovno ime uneti velikim slovima)</span>
+          </label>
+          <input
+            class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+            formControlName="ime">
+        </div>
+        <div class="w-1/3 pl-2" formGroupName="@">
+          <label class="block text-md">Državljanstvo</label>
+          <input
+            class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+            formControlName="drzavljanstvo">
+        </div>
+
+
+        <div class="w-full flex flex-wrap" formGroupName="adresa">
+          <div class="w-4/5 pr-2">
+            <label class="block text-md">Ulica</label>
+            <input
+              class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+              formControlName="ulica">
+          </div>
+          <div class="w-1/5 pl-2">
+            <label class="block text-md">Broj</label>
+            <input
+              class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+              formControlName="broj">
+          </div>
+
+          <div class="w-1/3 pr-2">
+            <label class="block text-md">Poštanski broj</label>
+            <input
+              class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+              formControlName="postanski_broj">
+          </div>
+          <div class="w-1/3 px-2">
+            <label class="block text-md">Mesto</label>
+            <input
+              class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+              formControlName="mesto">
+          </div>
+          <div class="w-1/3 pl-2">
+            <label class="block text-md">Država</label>
+            <input
+              class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+              formControlName="drzava">
+          </div>
+        </div>
+
+        <div class="w-full flex flex-wrap" formGroupName="kontakt">
+          <div class="w-1/3 pr-2">
+            <label class="block text-md">Broj telefona</label>
+            <input
+              class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+              formControlName="broj_telefona">
+          </div>
+          <div class="w-1/3 px-2">
+            <label class="block text-md">Broj faksa</label>
+            <input
+              class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+              formControlName="broj_faksa">
+          </div>
+          <div class="w-1/3 pl-2">
+            <label class="block text-md">E-pošta</label>
+            <input
+              class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+              formControlName="e_posta">
+          </div>
+        </div>
+      </div>
+
+      <!---------------------     Pronalazac     ---------------------->
+
+      <div class="w-full flex flex-wrap" formGroupName="pronalazac">
+        <div class="w-full text-xl mb-5">
+          <hr class="my-5 h-px bg-gray-400 border-0">
+          <div class="flex">
+            <div class="w-1/4 font-bold">Pronalazač</div>
+            <div class="flex items-center" formGroupName="@">
+              <input id="ne_zeli_da_bude_naveden" formControlName="ne_zeli_da_bude_naveden" type="checkbox" value=""
+                class="w-4 h-4 rounded">
+              <label for="ne_zeli_da_bude_naveden" class="ml-2 text-sm">Pronalazač ne želi da bude naveden</label>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="inputForm.get('pronalazac')?.get('ne_zeli_da_bude_naveden')?.value === false">
+          <div class="w-full">
+            <label class="block text-md">
+              Ime i prezime podnosioca / Poslovno ime
+              <span class="text-xs">(prezime uneti velikim slovima)</span>
+            </label>
+            <input
+              class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+              formControlName="ime">
+          </div>
+
+          <div class="w-full flex flex-wrap" formGroupName="adresa">
+            <div class="w-4/5 pr-2">
+              <label class="block text-md">Ulica</label>
+              <input
+                class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+                formControlName="ulica">
+            </div>
+            <div class="w-1/5 pl-2">
+              <label class="block text-md">Broj</label>
+              <input
+                class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+                formControlName="broj">
+            </div>
+
+            <div class="w-1/3 pr-2">
+              <label class="block text-md">Poštanski broj</label>
+              <input
+                class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+                formControlName="postanski_broj">
+            </div>
+            <div class="w-1/3 px-2">
+              <label class="block text-md">Mesto</label>
+              <input
+                class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+                formControlName="mesto">
+            </div>
+            <div class="w-1/3 pl-2">
+              <label class="block text-md">Država</label>
+              <input
+                class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+                formControlName="drzava">
+            </div>
+          </div>
+
+          <div class="w-full flex flex-wrap" formGroupName="kontakt">
+            <div class="w-1/3 pr-2">
+              <label class="block text-md">Broj telefona</label>
+              <input
+                class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+                formControlName="broj_telefona">
+            </div>
+            <div class="w-1/3 px-2">
+              <label class="block text-md">Broj faksa</label>
+              <input
+                class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+                formControlName="broj_faksa">
+            </div>
+            <div class="w-1/3 pl-2">
+              <label class="block text-md">E-pošta</label>
+              <input
+                class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+                formControlName="e_posta">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!---------------------     Punomoćnik     ---------------------->
+
+      <div class="w-full flex flex-wrap" formGroupName="punomocnik">
+        <div class="w-full text-xl mb-5">
+          <hr class="my-5 h-px bg-gray-400 border-0">
+          <div class="flex items" formGroupName="@">
+            <div class="w-1/4 font-bold">Punomoćnik</div>
+            <div class="flex items-center mr-4 w-1/4">
+              <input type="radio" value="zastupanje" name="vrsta_punomocnika" formControlName="vrsta_punomocnika"
+                id="punomocnik_za_zastupanje" class="checked:bg-blue-600">
+              <label for="punomocnik_za_zastupanje" class="ml-2 text-sm">Punomoćnik za zastupanje</label>
+            </div>
+            <div class="flex items-center mr-4">
+              <input type="radio" value="prijem" name="vrsta_punomocnika" formControlName="vrsta_punomocnika"
+                id="punomocnik_za_prijem_pismena" class="checked:bg-blue-600">
+              <label for="punomocnik_za_prijem_pismena" class="ml-2 text-sm">Punomoćnik za prijem pismena</label>
+            </div>
+          </div>
+        </div>
+        <div class="w-full flex items mb-5">
+          <div class="w-1/4"></div>
+          <div class="flex items-center" formGroupName="@">
+            <input formControlName="je_zajednicki_predstavnik" type="checkbox" value="" class="w-4 h-4 rounded">
+            <label for="je_zajednicki_predstavnik" class="ml-2 text-sm">Zajednički predstavnik</label>
+          </div>
+        </div>
+
+        <div class="w-full">
+          <label class="block text-md">
+            Ime i prezime / Poslovno ime
+            <span class="text-xs">(prezime / poslovno ime uneti velikim slovima)</span>
+          </label>
+          <input
+            class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+            formControlName="ime">
+        </div>
+
+        <div class="w-full flex flex-wrap" formGroupName="adresa">
+          <div class="w-4/5 pr-2">
+            <label class="block text-md">Ulica</label>
+            <input
+              class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+              formControlName="ulica">
+          </div>
+          <div class="w-1/5 pl-2">
+            <label class="block text-md">Broj</label>
+            <input
+              class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+              formControlName="broj">
+          </div>
+
+          <div class="w-1/3 pr-2">
+            <label class="block text-md">Poštanski broj</label>
+            <input
+              class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+              formControlName="postanski_broj">
+          </div>
+          <div class="w-1/3 px-2">
+            <label class="block text-md">Mesto</label>
+            <input
+              class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+              formControlName="mesto">
+          </div>
+          <div class="w-1/3 pl-2">
+            <label class="block text-md">Država</label>
+            <input
+              class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+              formControlName="drzava">
+          </div>
+        </div>
+
+        <div class="w-full flex flex-wrap" formGroupName="kontakt">
+          <div class="w-1/3 pr-2">
+            <label class="block text-md">Broj telefona</label>
+            <input
+              class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+              formControlName="broj_telefona">
+          </div>
+          <div class="w-1/3 px-2">
+            <label class="block text-md">Broj faksa</label>
+            <input
+              class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+              formControlName="broj_faksa">
+          </div>
+          <div class="w-1/3 pl-2">
+            <label class="block text-md">E-pošta</label>
+            <input
+              class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+              formControlName="e_posta">
+          </div>
+        </div>
+      </div>
+
+      <!---------------------     Adresa za dostavljanje     ---------------------->
+
+      <div class="w-full flex flex-wrap" formGroupName="adresa_za_dostavljanje">
+        <div class="w-full text-xl mb-5">
+          <hr class="my-5 h-px bg-gray-400 border-0">
+          <div class="font-bold">Adresa za dostavljanje</div>
+        </div>
+
+        <div class="w-4/5 pr-2">
+          <label class="block text-md">Ulica</label>
+          <input
+            class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+            formControlName="ulica">
+        </div>
+        <div class="w-1/5 pl-2">
+          <label class="block text-md">Broj</label>
+          <input
+            class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+            formControlName="broj">
+        </div>
+
+        <div class="w-1/3 pr-2">
+          <label class="block text-md">Poštanski broj</label>
+          <input
+            class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+            formControlName="postanski_broj">
+        </div>
+        <div class="w-1/3 px-2">
+          <label class="block text-md">Mesto</label>
+          <input
+            class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+            formControlName="mesto">
+        </div>
+        <div class="w-1/3 pl-2">
+          <label class="block text-md">Država</label>
+          <input
+            class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+            formControlName="drzava">
+        </div>
+      </div>
+
+      <!---------------------     Nacin dostavljanja     ---------------------->
+
+      <div class="w-full flex flex-wrap" formGroupName="nacin_dostavljanja">
+        <div class="w-full text-xl mb-5">
+          <hr class="my-5 h-px bg-gray-400 border-0">
+          <div class="w-1/4 font-bold">Način dostavljanja</div>
+        </div>
+
+        <div class="flex items-center mb-2">
+          <input id="saglasnost_za_dostavljanje_u_elektronskoj_formi" type="checkbox" value="" class="w-4 h-4 rounded"
+            formControlName="saglasnost_za_dostavljanje_u_elektronskoj_formi">
+          <label for="saglasnost_za_dostavljanje_u_elektronskoj_formi" class="ml-2 text-sm">
+            Podnosilac prijave je saglasan da Zavod vrši dostavljanje pismena isključivo elektronskim putem u formi
+            elektronskog dokumenta
+          </label>
+        </div>
+        <div class="flex items-center">
+          <input id="saglasnost_za_dostavljanje_u_papirnoj_formi" type="checkbox" value="" class="w-4 h-4 rounded"
+            formControlName="saglasnost_za_dostavljanje_u_papirnoj_formi">
+          <label for="saglasnost_za_dostavljanje_u_papirnoj_formi" class="ml-2 text-sm">
+            Podnosilac prijave je saglasan da Zavod vrši dostavljanje pismena u papirnoj formi
+          </label>
+        </div>
+      </div>
+
+      <!---------------------     Vrsta prijave     ---------------------->
+
+      <div class="w-full flex flex-wrap" formGroupName="prijava">
+        <div class="w-full text-xl mb-5">
+          <hr class="my-5 h-px bg-gray-300 border-0">
+          <div class="flex items">
+            <div class="w-1/4 font-bold">Vrsta prijave</div>
+            <div class="flex items-center mr-4 w-1/4">
+              <input id="izdvojena_prijava" type="radio" value="izdvojena" class="checked:bg-blue-600"
+                formControlName="vrsta_prijave" name="vrsta_prijave">
+              <label for="izdvojena_prijava" class="ml-2 text-sm">
+                Izdvojena prijava
+              </label>
+            </div>
+            <div class="flex items-center mr-4 w-1/4">
+              <input id="dopunska_prijava" type="radio" value="dopunska" class="checked:bg-blue-600"
+                formControlName="vrsta_prijave" name="vrsta_prijave">
+              <label for="dopunska_prijava" class="ml-2 text-sm">
+                Dopunska prijava
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full flex flex-wrap" *ngIf="inputForm.get('prijava')?.get('vrsta_prijave')?.value === 'dopunska'">
+          <div class="w-1/2 pr-2">
+            <label class="block text-md">Broj prvobitne prijave / osnovne prijave</label>
+            <input
+              class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+              id="broj_prvobitne_prijave">
+          </div>
+          <div class="w-1/2 pl-2 ">
+            <label class="block text-md">Datum podnošenja prvobitne prijave / osnovne prijave</label>
+            <input
+              class="py-2 px-4 mb-3 mt-2 border-2 border-gray-300 rounded w-full focus:outline-none focus:border-blue-300"
+              id="datum_podnosenja_prvobitne_prijave" type="date">
+          </div>
+        </div>
+      </div>
+
+      <!----------  Zahtev za priznanje prava prvenstva iz ranijih prijava  ----------->
+      <div class="w-full flex flex-wrap">
+        <div class="w-full text-xl mb-5">
+          <hr class="my-5 h-px bg-gray-400 border-0">
+          <div class="w-full font-bold">Zahtev za priznanje prava prvenstva iz ranijih prijava</div>
+        </div>
+
+        <table class="border-collapse w-full">
+          <tr class="text-sm">
+            <th class="border-2 border-gray-300 w-1/3 px-2">Datum podnošenja ranije prijave</th>
+            <th class="border-2 border-gray-300 w-1/3 px-2">Broj ranije prijave</th>
+            <th class="border-2 border-gray-300 w-1/6 px-2 text-xs">Dvoslovna oznaka države / organizacije</th>
+            <th class="border-2 border-gray-300 w-1/6"></th>
+          </tr>
+            
+            <ng-container formArrayName="zahtevi_za_priznanje_prvenstva_iz_ranijih_prijava">
+              <ng-container *ngFor="let zahtev of zahteviZaPriznanjePrvenstvaIzRanijihPrijava.controls; let i = index" [formGroupName]="i">
+                <tr formGroupName="zahtev">
+                  <td class="border-2 border-gray-300"><input class="border-0 py-2 px-4 w-full focus:outline-none" type="date"
+                      formControlName="datum_podnosenje_ranije_prijave"></td>
+                  <td class="border-2 border-gray-300"><input class="border-0 py-2 px-4 w-full focus:outline-none"
+                      formControlName="broj_ranije_prijave"></td>
+                  <td class="border-2 border-gray-300"><input class="border-0 py-2 px-4 w-full focus:outline-none"
+                      formControlName="dvoslovna_oznaka_drzave_ili_organizacije"></td>
+                  <td class="border-2 border-gray-300 w-1/6">
+                    <button class="w-full h-full bg-red-500 hover:bg-red-700 text-white py-1 px-3 rounded" (click)="ukloniZahtev(i)">Ukloni</button>
+                  </td>
+                </tr>
+              </ng-container>
+            </ng-container>
+        </table>
+
+        <div class="w-full mt-2 flex items-center justify-center">
+          <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-1 px-3 border border-gray-400 rounded-full shadow" (click)="dodajZahtev()">+</button>
+        </div>
+      </div>
+
+      <div class="w-full mt-5 flex items-center justify-center">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" type="submit" (click)="submitForm()">Pošalji zahtev</button>
+      </div>
+
+    </form>
+  </div>
+</div>

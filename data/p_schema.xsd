@@ -68,8 +68,13 @@
                 <xs:element name="prijava">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="dopunska_prijava" type="xs:boolean"/>
-                            <xs:element maxOccurs="1" name="izdvojena_prijava" type="xs:boolean"/>
+                            <xs:element name="vrsta_prijave">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:pattern value="dopunska|izdvojena"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
                             <xs:element minOccurs="0" name="broj_prvobitne_prijave">
                                 <xs:simpleType>
                                     <xs:restriction base="xs:string">

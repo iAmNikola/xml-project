@@ -67,8 +67,7 @@
   </nacin_dostavljanja>
 
   <prijava>
-    <dopunska_prijava></dopunska_prijava>
-    <izdvojena_prijava></izdvojena_prijava>
+    <vrsta_prijave></vrsta_prijave>
     <broj_prvobitne_prijave></broj_prvobitne_prijave>
     <datum_podnosenja_prvobitne_prijave></datum_podnosenja_prvobitne_prijave>
   </prijava>
