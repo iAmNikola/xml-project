@@ -1,4 +1,4 @@
-package util;
+package backend.patent.util;
 
 import javax.xml.bind.ValidationEvent;
 import javax.xml.bind.ValidationEventHandler;

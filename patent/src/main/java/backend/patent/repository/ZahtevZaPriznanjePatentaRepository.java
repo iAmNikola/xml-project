@@ -1,6 +1,6 @@
-package repository;
+package backend.patent.repository;
 
-import jaxb.ZahtevZaPriznanjePatenta;
+import backend.patent.jaxb.ZahtevZaPriznanjePatenta;
 import org.exist.xmldb.EXistResource;
 import org.xmldb.api.DatabaseManager;
 import org.xmldb.api.base.Collection;
@@ -8,8 +8,8 @@ import org.xmldb.api.base.Database;
 import org.xmldb.api.base.XMLDBException;
 import org.xmldb.api.modules.CollectionManagementService;
 import org.xmldb.api.modules.XMLResource;
-import util.AuthenticationUtilities;
-import util.AuthenticationUtilities.ConnectionProperties;
+import backend.patent.util.AuthenticationUtilities;
+import backend.patent.util.AuthenticationUtilities.ConnectionProperties;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;

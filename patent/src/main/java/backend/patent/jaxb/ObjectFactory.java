@@ -1,5 +1,5 @@
 
-package jaxb;
+package backend.patent.jaxb;
 
 import javax.xml.bind.annotation.XmlRegistry;
 

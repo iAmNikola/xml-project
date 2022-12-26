@@ -1,5 +1,5 @@
 
-package jaxb;
+package backend.patent.jaxb;
 
 import java.util.ArrayList;
 import java.util.List;
