@@ -64,8 +64,7 @@
   </nacin_dostavljanja>
 
   <prijava>
-    <dopunska_prijava>true</dopunska_prijava>
-    <izdvojena_prijava>true</izdvojena_prijava>
+    <vrsta_prijave>dopunska</vrsta_prijave>
     <broj_prvobitne_prijave>P-123456</broj_prvobitne_prijave>
     <datum_podnosenja_prvobitne_prijave>2022-11-12</datum_podnosenja_prvobitne_prijave>
   </prijava>

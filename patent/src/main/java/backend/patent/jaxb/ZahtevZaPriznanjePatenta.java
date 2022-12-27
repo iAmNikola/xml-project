@@ -40,18 +40,12 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *             &lt;complexContent>
  *               &lt;extension base="{http://www.foolstech.com/p1}TOsoba">
  *                 &lt;attribute name="je_pronalazac" type="{http://www.w3.org/2001/XMLSchema}boolean" />
- *                 &lt;attribute name="drzavljanstvo">
- *                   &lt;simpleType>
- *                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *                       &lt;pattern value="[A-Za-z ]+"/>
- *                     &lt;/restriction>
- *                   &lt;/simpleType>
- *                 &lt;/attribute>
+ *                 &lt;attribute name="drzavljanstvo" type="{http://www.w3.org/2001/XMLSchema}string" />
  *               &lt;/extension>
  *             &lt;/complexContent>
  *           &lt;/complexType>
  *         &lt;/element>
- *         &lt;element name="pronalazac">
+ *         &lt;element name="pronalazac" minOccurs="0">
  *           &lt;complexType>
  *             &lt;complexContent>
  *               &lt;extension base="{http://www.foolstech.com/p1}TOsoba">
@@ -64,13 +58,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *           &lt;complexType>
  *             &lt;complexContent>
  *               &lt;extension base="{http://www.foolstech.com/p1}TOsoba">
- *                 &lt;attribute name="vrsta_punomocnika">
- *                   &lt;simpleType>
- *                     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *                       &lt;pattern value="zastupanje|prijem"/>
- *                     &lt;/restriction>
- *                   &lt;/simpleType>
- *                 &lt;/attribute>
+ *                 &lt;attribute name="vrsta_punomocnika" type="{http://www.w3.org/2001/XMLSchema}string" />
  *                 &lt;attribute name="je_zajednicki_predstavnik" type="{http://www.w3.org/2001/XMLSchema}boolean" />
  *               &lt;/extension>
  *             &lt;/complexContent>
@@ -94,15 +82,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                 &lt;sequence>
- *                   &lt;element name="dopunska_prijava" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
- *                   &lt;element name="izdvojena_prijava" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
- *                   &lt;element name="broj_prvobitne_prijave" minOccurs="0">
- *                     &lt;simpleType>
- *                       &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *                         &lt;pattern value="P-[0-9]{6}"/>
- *                       &lt;/restriction>
- *                     &lt;/simpleType>
- *                   &lt;/element>
+ *                   &lt;element name="vrsta_prijave" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *                   &lt;element name="broj_prvobitne_prijave" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *                   &lt;element name="datum_podnosenja_prvobitne_prijave" type="{http://www.w3.org/2001/XMLSchema}date" minOccurs="0"/>
  *                 &lt;/sequence>
  *               &lt;/restriction>
@@ -121,13 +102,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *           &lt;/complexType>
  *         &lt;/element>
  *       &lt;/sequence>
- *       &lt;attribute name="broj_prijave">
- *         &lt;simpleType>
- *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *             &lt;pattern value="P-[0-9]{6}"/>
- *           &lt;/restriction>
- *         &lt;/simpleType>
- *       &lt;/attribute>
+ *       &lt;attribute name="broj_prijave" type="{http://www.w3.org/2001/XMLSchema}string" />
  *       &lt;attribute name="datum_prijema" type="{http://www.w3.org/2001/XMLSchema}date" />
  *       &lt;attribute name="datum_podnosenja" type="{http://www.w3.org/2001/XMLSchema}date" />
  *     &lt;/restriction>
@@ -152,21 +127,21 @@ import javax.xml.datatype.XMLGregorianCalendar;
 public class ZahtevZaPriznanjePatenta {
 
     @XmlElement(name = "naziv_pronalaska", namespace = "http://www.foolstech.com/p1", required = true)
-    protected NazivPronalaska nazivPronalaska;
+    protected ZahtevZaPriznanjePatenta.NazivPronalaska nazivPronalaska;
     @XmlElement(namespace = "http://www.foolstech.com/p1", required = true)
-    protected Podnosilac podnosilac;
+    protected ZahtevZaPriznanjePatenta.Podnosilac podnosilac;
+    @XmlElement(namespace = "http://www.foolstech.com/p1")
+    protected ZahtevZaPriznanjePatenta.Pronalazac pronalazac;
     @XmlElement(namespace = "http://www.foolstech.com/p1", required = true)
-    protected Pronalazac pronalazac;
-    @XmlElement(namespace = "http://www.foolstech.com/p1", required = true)
-    protected Punomocnik punomocnik;
+    protected ZahtevZaPriznanjePatenta.Punomocnik punomocnik;
     @XmlElement(name = "adresa_za_dostavljanje", namespace = "http://www.foolstech.com/p1", required = true)
     protected TAdresa adresaZaDostavljanje;
     @XmlElement(name = "nacin_dostavljanja", namespace = "http://www.foolstech.com/p1", required = true)
-    protected NacinDostavljanja nacinDostavljanja;
+    protected ZahtevZaPriznanjePatenta.NacinDostavljanja nacinDostavljanja;
     @XmlElement(namespace = "http://www.foolstech.com/p1", required = true)
-    protected Prijava prijava;
+    protected ZahtevZaPriznanjePatenta.Prijava prijava;
     @XmlElement(name = "zahtevi_za_priznanje_prvenstva_iz_ranijih_prijava", namespace = "http://www.foolstech.com/p1", required = true)
-    protected ZahteviZaPriznanjePrvenstvaIzRanijihPrijava zahteviZaPriznanjePrvenstvaIzRanijihPrijava;
+    protected ZahtevZaPriznanjePatenta.ZahteviZaPriznanjePrvenstvaIzRanijihPrijava zahteviZaPriznanjePrvenstvaIzRanijihPrijava;
     @XmlAttribute(name = "broj_prijave")
     protected String brojPrijave;
     @XmlAttribute(name = "datum_prijema")
@@ -181,10 +156,10 @@ public class ZahtevZaPriznanjePatenta {
      * 
      * @return
      *     possible object is
-     *     {@link NazivPronalaska }
+     *     {@link ZahtevZaPriznanjePatenta.NazivPronalaska }
      *     
      */
-    public NazivPronalaska getNazivPronalaska() {
+    public ZahtevZaPriznanjePatenta.NazivPronalaska getNazivPronalaska() {
         return nazivPronalaska;
     }
 
@@ -193,10 +168,10 @@ public class ZahtevZaPriznanjePatenta {
      * 
      * @param value
      *     allowed object is
-     *     {@link NazivPronalaska }
+     *     {@link ZahtevZaPriznanjePatenta.NazivPronalaska }
      *     
      */
-    public void setNazivPronalaska(NazivPronalaska value) {
+    public void setNazivPronalaska(ZahtevZaPriznanjePatenta.NazivPronalaska value) {
         this.nazivPronalaska = value;
     }
 
@@ -205,10 +180,10 @@ public class ZahtevZaPriznanjePatenta {
      * 
      * @return
      *     possible object is
-     *     {@link Podnosilac }
+     *     {@link ZahtevZaPriznanjePatenta.Podnosilac }
      *     
      */
-    public Podnosilac getPodnosilac() {
+    public ZahtevZaPriznanjePatenta.Podnosilac getPodnosilac() {
         return podnosilac;
     }
 
@@ -217,10 +192,10 @@ public class ZahtevZaPriznanjePatenta {
      * 
      * @param value
      *     allowed object is
-     *     {@link Podnosilac }
+     *     {@link ZahtevZaPriznanjePatenta.Podnosilac }
      *     
      */
-    public void setPodnosilac(Podnosilac value) {
+    public void setPodnosilac(ZahtevZaPriznanjePatenta.Podnosilac value) {
         this.podnosilac = value;
     }
 
@@ -229,10 +204,10 @@ public class ZahtevZaPriznanjePatenta {
      * 
      * @return
      *     possible object is
-     *     {@link Pronalazac }
+     *     {@link ZahtevZaPriznanjePatenta.Pronalazac }
      *     
      */
-    public Pronalazac getPronalazac() {
+    public ZahtevZaPriznanjePatenta.Pronalazac getPronalazac() {
         return pronalazac;
     }
 
@@ -241,10 +216,10 @@ public class ZahtevZaPriznanjePatenta {
      * 
      * @param value
      *     allowed object is
-     *     {@link Pronalazac }
+     *     {@link ZahtevZaPriznanjePatenta.Pronalazac }
      *     
      */
-    public void setPronalazac(Pronalazac value) {
+    public void setPronalazac(ZahtevZaPriznanjePatenta.Pronalazac value) {
         this.pronalazac = value;
     }
 
@@ -253,10 +228,10 @@ public class ZahtevZaPriznanjePatenta {
      * 
      * @return
      *     possible object is
-     *     {@link Punomocnik }
+     *     {@link ZahtevZaPriznanjePatenta.Punomocnik }
      *     
      */
-    public Punomocnik getPunomocnik() {
+    public ZahtevZaPriznanjePatenta.Punomocnik getPunomocnik() {
         return punomocnik;
     }
 
@@ -265,10 +240,10 @@ public class ZahtevZaPriznanjePatenta {
      * 
      * @param value
      *     allowed object is
-     *     {@link Punomocnik }
+     *     {@link ZahtevZaPriznanjePatenta.Punomocnik }
      *     
      */
-    public void setPunomocnik(Punomocnik value) {
+    public void setPunomocnik(ZahtevZaPriznanjePatenta.Punomocnik value) {
         this.punomocnik = value;
     }
 
@@ -301,10 +276,10 @@ public class ZahtevZaPriznanjePatenta {
      * 
      * @return
      *     possible object is
-     *     {@link NacinDostavljanja }
+     *     {@link ZahtevZaPriznanjePatenta.NacinDostavljanja }
      *     
      */
-    public NacinDostavljanja getNacinDostavljanja() {
+    public ZahtevZaPriznanjePatenta.NacinDostavljanja getNacinDostavljanja() {
         return nacinDostavljanja;
     }
 
@@ -313,10 +288,10 @@ public class ZahtevZaPriznanjePatenta {
      * 
      * @param value
      *     allowed object is
-     *     {@link NacinDostavljanja }
+     *     {@link ZahtevZaPriznanjePatenta.NacinDostavljanja }
      *     
      */
-    public void setNacinDostavljanja(NacinDostavljanja value) {
+    public void setNacinDostavljanja(ZahtevZaPriznanjePatenta.NacinDostavljanja value) {
         this.nacinDostavljanja = value;
     }
 
@@ -325,10 +300,10 @@ public class ZahtevZaPriznanjePatenta {
      * 
      * @return
      *     possible object is
-     *     {@link Prijava }
+     *     {@link ZahtevZaPriznanjePatenta.Prijava }
      *     
      */
-    public Prijava getPrijava() {
+    public ZahtevZaPriznanjePatenta.Prijava getPrijava() {
         return prijava;
     }
 
@@ -337,10 +312,10 @@ public class ZahtevZaPriznanjePatenta {
      * 
      * @param value
      *     allowed object is
-     *     {@link Prijava }
+     *     {@link ZahtevZaPriznanjePatenta.Prijava }
      *     
      */
-    public void setPrijava(Prijava value) {
+    public void setPrijava(ZahtevZaPriznanjePatenta.Prijava value) {
         this.prijava = value;
     }
 
@@ -349,10 +324,10 @@ public class ZahtevZaPriznanjePatenta {
      * 
      * @return
      *     possible object is
-     *     {@link ZahteviZaPriznanjePrvenstvaIzRanijihPrijava }
+     *     {@link ZahtevZaPriznanjePatenta.ZahteviZaPriznanjePrvenstvaIzRanijihPrijava }
      *     
      */
-    public ZahteviZaPriznanjePrvenstvaIzRanijihPrijava getZahteviZaPriznanjePrvenstvaIzRanijihPrijava() {
+    public ZahtevZaPriznanjePatenta.ZahteviZaPriznanjePrvenstvaIzRanijihPrijava getZahteviZaPriznanjePrvenstvaIzRanijihPrijava() {
         return zahteviZaPriznanjePrvenstvaIzRanijihPrijava;
     }
 
@@ -361,10 +336,10 @@ public class ZahtevZaPriznanjePatenta {
      * 
      * @param value
      *     allowed object is
-     *     {@link ZahteviZaPriznanjePrvenstvaIzRanijihPrijava }
+     *     {@link ZahtevZaPriznanjePatenta.ZahteviZaPriznanjePrvenstvaIzRanijihPrijava }
      *     
      */
-    public void setZahteviZaPriznanjePrvenstvaIzRanijihPrijava(ZahteviZaPriznanjePrvenstvaIzRanijihPrijava value) {
+    public void setZahteviZaPriznanjePrvenstvaIzRanijihPrijava(ZahtevZaPriznanjePatenta.ZahteviZaPriznanjePrvenstvaIzRanijihPrijava value) {
         this.zahteviZaPriznanjePrvenstvaIzRanijihPrijava = value;
     }
 
@@ -601,13 +576,7 @@ public class ZahtevZaPriznanjePatenta {
      *   &lt;complexContent>
      *     &lt;extension base="{http://www.foolstech.com/p1}TOsoba">
      *       &lt;attribute name="je_pronalazac" type="{http://www.w3.org/2001/XMLSchema}boolean" />
-     *       &lt;attribute name="drzavljanstvo">
-     *         &lt;simpleType>
-     *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
-     *             &lt;pattern value="[A-Za-z ]+"/>
-     *           &lt;/restriction>
-     *         &lt;/simpleType>
-     *       &lt;/attribute>
+     *       &lt;attribute name="drzavljanstvo" type="{http://www.w3.org/2001/XMLSchema}string" />
      *     &lt;/extension>
      *   &lt;/complexContent>
      * &lt;/complexType>
@@ -687,15 +656,8 @@ public class ZahtevZaPriznanjePatenta {
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;sequence>
-     *         &lt;element name="dopunska_prijava" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
-     *         &lt;element name="izdvojena_prijava" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
-     *         &lt;element name="broj_prvobitne_prijave" minOccurs="0">
-     *           &lt;simpleType>
-     *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
-     *               &lt;pattern value="P-[0-9]{6}"/>
-     *             &lt;/restriction>
-     *           &lt;/simpleType>
-     *         &lt;/element>
+     *         &lt;element name="vrsta_prijave" type="{http://www.w3.org/2001/XMLSchema}string"/>
+     *         &lt;element name="broj_prvobitne_prijave" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
      *         &lt;element name="datum_podnosenja_prvobitne_prijave" type="{http://www.w3.org/2001/XMLSchema}date" minOccurs="0"/>
      *       &lt;/sequence>
      *     &lt;/restriction>
@@ -707,17 +669,14 @@ public class ZahtevZaPriznanjePatenta {
      */
     @XmlAccessorType(XmlAccessType.FIELD)
     @XmlType(name = "", propOrder = {
-        "dopunskaPrijava",
-        "izdvojenaPrijava",
+        "vrstaPrijave",
         "brojPrvobitnePrijave",
         "datumPodnosenjaPrvobitnePrijave"
     })
     public static class Prijava {
 
-        @XmlElement(name = "dopunska_prijava", namespace = "http://www.foolstech.com/p1")
-        protected boolean dopunskaPrijava;
-        @XmlElement(name = "izdvojena_prijava", namespace = "http://www.foolstech.com/p1")
-        protected boolean izdvojenaPrijava;
+        @XmlElement(name = "vrsta_prijave", namespace = "http://www.foolstech.com/p1", required = true)
+        protected String vrstaPrijave;
         @XmlElement(name = "broj_prvobitne_prijave", namespace = "http://www.foolstech.com/p1")
         protected String brojPrvobitnePrijave;
         @XmlElement(name = "datum_podnosenja_prvobitne_prijave", namespace = "http://www.foolstech.com/p1")
@@ -725,35 +684,27 @@ public class ZahtevZaPriznanjePatenta {
         protected XMLGregorianCalendar datumPodnosenjaPrvobitnePrijave;
 
         /**
-         * Gets the value of the dopunskaPrijava property.
+         * Gets the value of the vrstaPrijave property.
          * 
+         * @return
+         *     possible object is
+         *     {@link String }
+         *     
          */
-        public boolean isDopunskaPrijava() {
-            return dopunskaPrijava;
+        public String getVrstaPrijave() {
+            return vrstaPrijave;
         }
 
         /**
-         * Sets the value of the dopunskaPrijava property.
+         * Sets the value of the vrstaPrijave property.
          * 
+         * @param value
+         *     allowed object is
+         *     {@link String }
+         *     
          */
-        public void setDopunskaPrijava(boolean value) {
-            this.dopunskaPrijava = value;
-        }
-
-        /**
-         * Gets the value of the izdvojenaPrijava property.
-         * 
-         */
-        public boolean isIzdvojenaPrijava() {
-            return izdvojenaPrijava;
-        }
-
-        /**
-         * Sets the value of the izdvojenaPrijava property.
-         * 
-         */
-        public void setIzdvojenaPrijava(boolean value) {
-            this.izdvojenaPrijava = value;
+        public void setVrstaPrijave(String value) {
+            this.vrstaPrijave = value;
         }
 
         /**
@@ -869,13 +820,7 @@ public class ZahtevZaPriznanjePatenta {
      * &lt;complexType>
      *   &lt;complexContent>
      *     &lt;extension base="{http://www.foolstech.com/p1}TOsoba">
-     *       &lt;attribute name="vrsta_punomocnika">
-     *         &lt;simpleType>
-     *           &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
-     *             &lt;pattern value="zastupanje|prijem"/>
-     *           &lt;/restriction>
-     *         &lt;/simpleType>
-     *       &lt;/attribute>
+     *       &lt;attribute name="vrsta_punomocnika" type="{http://www.w3.org/2001/XMLSchema}string" />
      *       &lt;attribute name="je_zajednicki_predstavnik" type="{http://www.w3.org/2001/XMLSchema}boolean" />
      *     &lt;/extension>
      *   &lt;/complexContent>

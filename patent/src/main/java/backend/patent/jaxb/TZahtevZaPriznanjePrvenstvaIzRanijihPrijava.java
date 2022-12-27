@@ -20,21 +20,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="datum_podnosenje_ranije_prijave" type="{http://www.w3.org/2001/XMLSchema}date"/>
- *         &lt;element name="broj_ranije_prijave">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *               &lt;pattern value="P-[0-9]{6}"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
- *         &lt;element name="dvoslovna_oznaka_drzave_ili_organizacije">
- *           &lt;simpleType>
- *             &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
- *               &lt;length value="2"/>
- *               &lt;whiteSpace value="preserve"/>
- *             &lt;/restriction>
- *           &lt;/simpleType>
- *         &lt;/element>
+ *         &lt;element name="broj_ranije_prijave" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="dvoslovna_oznaka_drzave_ili_organizacije" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>

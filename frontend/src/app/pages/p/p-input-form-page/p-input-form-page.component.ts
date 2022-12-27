@@ -1,5 +1,6 @@
 import { Component, NgModule } from '@angular/core';
 import { FormBuilder, FormArray } from '@angular/forms';
+import { PatentService } from 'src/app/classes/PatentService'
 import * as JsonToXML from "js2xmlparser";
 
 @Component({
@@ -10,99 +11,98 @@ import * as JsonToXML from "js2xmlparser";
 
 export class PInputFormPageComponent {
   
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private ps: PatentService
+    ) {}
   
   inputForm = this.fb.group({
-    naziv_pronalaska : this.fb.group({
-      naziv_na_srpskom : [''],
-      naziv_na_engleskom : ['']
+    nazivPronalaska : this.fb.group({
+      nazivNaSrpskom : [''],
+      nazivNaEngleskom : ['']
     }),
     podnosilac : this.fb.group({
       '@' : this.fb.group({
-        je_pronalazac : [false],
+        jePronalazac : [false],
         drzavljanstvo : ['']
       }),
       ime : [''],
       adresa : this.fb.group({
         ulica : [''],
-        broj : [''],
-        postanski_broj : [''],
+        postanskiBroj : [''],
         mesto : [''],
         drzava : ['']
       }),
       kontakt : this.fb.group ({
-        broj_telefona : [''],
-        broj_faksa : [''],
-        e_posta : ['']
+        brojTelefona : [''],
+        brojFaksa : [''],
+        ePosta : ['']
       })
     }),
     pronalazac : this.fb.group({
       '@' : this.fb.group({
-        ne_zeli_da_bude_naveden : [false]
+        neZeliDaBudeNaveden : [false]
       }),
       ime : [''],
       adresa : this.fb.group({
         ulica : [''],
-        broj : [''],
-        postanski_broj : [''],
+        postanskiBroj : [''],
         mesto : [''],
         drzava : ['']
       }),
       kontakt : this.fb.group ({
-        broj_telefona : [''],
-        broj_faksa : [''],
-        e_posta : ['']
+        brojTelefona : [''],
+        brojFaksa : [''],
+        ePosta : ['']
       })
     }),
     punomocnik : this.fb.group({
       '@' : this.fb.group({
-        vrsta_punomocnika : ['prijem'],
-        je_zajednicki_predstavnik : [false],
+        vrstaPunomocnika : ['prijem'],
+        jeZajednickiPredstavnik : [false],
       }),
       ime : [''],
       adresa : this.fb.group({
         ulica : [''],
-        broj : [''],
-        postanski_broj : [''],
+        postanskiBroj : [''],
         mesto : [''],
         drzava : ['']
       }),
       kontakt : this.fb.group ({
-        broj_telefona : [''],
-        broj_faksa : [''],
-        e_posta : ['']
+        brojTelefona : [''],
+        brojFaksa : [''],
+        ePosta : ['']
       })
     }),
-    adresa_za_dostavljanje : this.fb.group({
+    adresaZaDostavljanje : this.fb.group({
       ulica : [''],
-      broj : [''],
-      postanski_broj : [''],
+      postanskiBroj : [''],
       mesto : [''],
       drzava : ['']
     }),
-    nacin_dostavljanja : this.fb.group({
-      saglasnost_za_dostavljanje_u_elektronskoj_formi : [false],
-      saglasnost_za_dostavljanje_u_papirnoj_formi : [false]
+    nacinDostavljanja : this.fb.group({
+      saglasnostZaDostavljanjeUElektronskojFormi : [false],
+      saglasnostZaDostavljanjeUPapirnojFormi : [false]
     }),
     prijava : this.fb.group({
-      vrsta_prijave : ['izdvojena'],
-      broj_prvobitne_prijave : [''],
-      datum_podnosenja_prvobitne_prijave: ['']
+      vrstaPrijave : ['izdvojena'],
+      brojPrvobitnePrijave : [''],
+      datumPodnosenjaPrvobitnePrijave: ['']
     }),
-    zahtevi_za_priznanje_prvenstva_iz_ranijih_prijava : this.fb.array([])
+    zahteviZaPriznanjePrvenstvaIzRanijihPrijava : this.fb.array([])
   });
 
   
   get zahteviZaPriznanjePrvenstvaIzRanijihPrijava() {
-    return (this.inputForm.get("zahtevi_za_priznanje_prvenstva_iz_ranijih_prijava") as FormArray);
+    return (this.inputForm.get("zahteviZaPriznanjePrvenstvaIzRanijihPrijava") as FormArray);
   }
 
   dodajZahtev() : void {
     const zahtev = this.fb.group({
       zahtev : this.fb.group({
-        datum_podnosenje_ranije_prijave : [''],
-        broj_ranije_prijave : [''],
-        dvoslovna_oznaka_drzave_ili_organizacije : ['']
+        datumPodnosenjeRanijePrijave : [''],
+        brojRanijePrijave : [''],
+        dvoslovnaOznakaDrzaveIliOrganizacije : ['']
       })
     });
     this.zahteviZaPriznanjePrvenstvaIzRanijihPrijava.push(zahtev);
@@ -114,10 +114,6 @@ export class PInputFormPageComponent {
   }
 
   submitForm() {
-    console.log(this.inputForm.value)
-    const xmlZahtev = JsonToXML.parse("zahtev_za_priznanje_patenta", this.inputForm.value);
-    console.log(xmlZahtev)
-    // const xmlOdgovor = this.httpClient.post(this.url + '/resenja-zahteva/add-resenje-zahteva', xmlZahtev, {headers: new HttpHeaders().set('Content-Type', 'application/xml'), responseType:'text'});
-    // return xmlOdgovor;
+    this.ps.addZahtev(this.inputForm.value);
   }
 }

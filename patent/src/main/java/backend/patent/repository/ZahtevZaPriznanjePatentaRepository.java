@@ -1,15 +1,13 @@
 package backend.patent.repository;
 
 import backend.patent.jaxb.ZahtevZaPriznanjePatenta;
-import org.exist.xmldb.EXistResource;
 import org.xmldb.api.DatabaseManager;
-import org.xmldb.api.base.Collection;
-import org.xmldb.api.base.Database;
-import org.xmldb.api.base.XMLDBException;
+import org.xmldb.api.base.*;
 import org.xmldb.api.modules.CollectionManagementService;
 import org.xmldb.api.modules.XMLResource;
 import backend.patent.util.AuthenticationUtilities;
 import backend.patent.util.AuthenticationUtilities.ConnectionProperties;
+import org.xmldb.api.modules.XPathQueryService;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
@@ -17,16 +15,18 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.OutputKeys;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ZahtevZaPriznanjePatentaRepository {
 
-    public void findById() throws Exception {
+    public void findById(String id) throws Exception {
 
         ConnectionProperties conn = AuthenticationUtilities.loadProperties();
 
         // initialize collection and document identifiers
         String collectionId = "/db/xml-project/patenti";
-        String documentId = "2.xml";
+        String documentId = id + ".xml";
 
         // initialize database driver
         Class<?> cl = Class.forName(conn.driver);
@@ -50,7 +50,7 @@ public class ZahtevZaPriznanjePatentaRepository {
                 System.out.println("[WARNING] Document '" + documentId + "' can not be found!");
             } else {
 
-                JAXBContext context = JAXBContext.newInstance("jaxb");
+                JAXBContext context = JAXBContext.newInstance("backend.patent.jaxb");
 
                 Unmarshaller unmarshaller = context.createUnmarshaller();
 
@@ -71,7 +71,7 @@ public class ZahtevZaPriznanjePatentaRepository {
 
         System.out.println("[INFO] Using defaults.");
         String collectionId = "/db/xml-project/patenti";
-        String documentId = "2.xml";
+        String documentId = zahtev.getBrojPrijave() + ".xml";
         String filePath = "data/p_input.xml";
 
 
@@ -96,7 +96,6 @@ public class ZahtevZaPriznanjePatentaRepository {
         OutputStream os = new ByteArrayOutputStream();
 
         try {
-
             System.out.println("[INFO] Retrieving the collection: " + collectionId);
             col = getOrCreateCollection(conn, collectionId);
 
@@ -108,7 +107,7 @@ public class ZahtevZaPriznanjePatentaRepository {
             res = (XMLResource) col.createResource(documentId, XMLResource.RESOURCE_TYPE);
 
             System.out.println("[INFO] Unmarshalling XML document to an JAXB instance: ");
-            JAXBContext context = JAXBContext.newInstance("jaxb");
+            JAXBContext context = JAXBContext.newInstance("backend.patent.jaxb");
 
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
@@ -128,29 +127,69 @@ public class ZahtevZaPriznanjePatentaRepository {
         }
     }
 
-    private void cleanup(Collection col, XMLResource res) {
-        if(res != null) {
-            try {
-                ((EXistResource)res).freeResources();
-            } catch (XMLDBException xe) {
-                xe.printStackTrace();
-            }
-        }
-
+    private void cleanup(Collection col, XMLResource res) throws XMLDBException {
         if(col != null) {
-            try {
-                col.close();
-            } catch (XMLDBException xe) {
-                xe.printStackTrace();
-            }
+            col.close();
         }
     }
 
-    private static Collection getOrCreateCollection(ConnectionProperties conn, String collectionUri) throws XMLDBException {
+    public List<ZahtevZaPriznanjePatenta> getAll() throws Exception {
+        AuthenticationUtilities.ConnectionProperties conn = AuthenticationUtilities.loadProperties();
+
+        // initialize collection and document identifiers
+        String collectionId = "/db/xml-project/patenti";
+
+        System.out.println("\t- collection ID: " + collectionId);
+
+        System.out.println("[INFO] Loading driver class: " + conn.driver);
+        Class<?> cl = Class.forName(conn.driver);
+
+        Database database = (Database) cl.newInstance();
+        database.setProperty("create-database", "true");
+
+        DatabaseManager.registerDatabase(database);
+
+        Collection col = null;
+
+        ZahtevZaPriznanjePatenta zahtevZaPriznanjePatenta = null;
+        List<ZahtevZaPriznanjePatenta> zahteviZaPriznanjePatenta;
+        int sum;
+        try {
+            // get the collection
+            System.out.println("[INFO] Retrieving the collection: " + collectionId);
+            col = DatabaseManager.getCollection(conn.uri + collectionId);
+            //col.setProperty(OutputKeys.INDENT, "yes");
+
+            XPathQueryService xPathQueryService = (XPathQueryService) col.getService("XPathQueryService", "1.0");
+            xPathQueryService.setProperty("indent", "yes");
+
+            String xPathExp = "//Zahtev_za_priznanje_patenta";
+            ResourceSet result = xPathQueryService.query(xPathExp);
+            ResourceIterator i = result.getIterator();
+            XMLResource res = null;
+            zahteviZaPriznanjePatenta = new ArrayList<>();
+            while (i.hasMoreResources()) {
+                res = (XMLResource) i.nextResource();
+                //System.out.println(res.getContent());
+
+                JAXBContext context = JAXBContext.newInstance(ZahtevZaPriznanjePatenta.class);
+                Unmarshaller unmarshaller = context.createUnmarshaller();
+                zahtevZaPriznanjePatenta = (ZahtevZaPriznanjePatenta) unmarshaller.unmarshal(res.getContentAsDOM());
+                zahteviZaPriznanjePatenta.add(zahtevZaPriznanjePatenta);
+            }
+        } finally {
+            if (col != null) {
+                col.close();
+            }
+        }
+        return zahteviZaPriznanjePatenta;
+    }
+
+    private Collection getOrCreateCollection(ConnectionProperties conn, String collectionUri) throws XMLDBException {
         return getOrCreateCollection(conn, collectionUri, 0);
     }
 
-    private static Collection getOrCreateCollection(ConnectionProperties conn, String collectionUri, int pathSegmentOffset) throws XMLDBException {
+    private Collection getOrCreateCollection(ConnectionProperties conn, String collectionUri, int pathSegmentOffset) throws XMLDBException {
 
         Collection col = DatabaseManager.getCollection(conn.uri + collectionUri, conn.user, conn.password);
 

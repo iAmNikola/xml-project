@@ -36,9 +36,9 @@ import javax.xml.bind.annotation.XmlType;
     "kontakt"
 })
 @XmlSeeAlso({
-    ZahtevZaPriznanjePatenta.Podnosilac.class,
-    ZahtevZaPriznanjePatenta.Pronalazac.class,
-    ZahtevZaPriznanjePatenta.Punomocnik.class
+    backend.patent.jaxb.ZahtevZaPriznanjePatenta.Podnosilac.class,
+    backend.patent.jaxb.ZahtevZaPriznanjePatenta.Pronalazac.class,
+    backend.patent.jaxb.ZahtevZaPriznanjePatenta.Punomocnik.class
 })
 public class TOsoba {
 
