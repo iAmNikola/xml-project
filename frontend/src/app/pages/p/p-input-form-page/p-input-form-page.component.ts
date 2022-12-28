@@ -1,6 +1,6 @@
 import { Component, NgModule } from '@angular/core';
 import { FormBuilder, FormArray } from '@angular/forms';
-import { PatentService } from 'src/app/classes/PatentService'
+import { PatentService } from 'src/app/services/PatentService'
 import * as JsonToXML from "js2xmlparser";
 
 @Component({

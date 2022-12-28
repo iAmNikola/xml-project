@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PInputFormPageComponent } from './pages/p/p-input-form-page/p-input-form-page.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PSearchComponent } from './pages/p/p-search-page/p-search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PInputFormPageComponent
+    PInputFormPageComponent,
+    PSearchComponent
   ],
   imports: [
     BrowserModule,

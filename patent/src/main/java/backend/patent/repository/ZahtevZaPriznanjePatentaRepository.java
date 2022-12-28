@@ -20,7 +20,8 @@ import java.util.List;
 
 public class ZahtevZaPriznanjePatentaRepository {
 
-    public void findById(String id) throws Exception {
+    public ZahtevZaPriznanjePatenta findById(String id) throws Exception {
+        ZahtevZaPriznanjePatenta zahtev = null;
 
         ConnectionProperties conn = AuthenticationUtilities.loadProperties();
 
@@ -54,14 +55,13 @@ public class ZahtevZaPriznanjePatentaRepository {
 
                 Unmarshaller unmarshaller = context.createUnmarshaller();
 
-                ZahtevZaPriznanjePatenta zahtev = (ZahtevZaPriznanjePatenta) unmarshaller.unmarshal(res.getContentAsDOM());
-
-                System.out.println(zahtev);
+                zahtev = (ZahtevZaPriznanjePatenta) unmarshaller.unmarshal(res.getContentAsDOM());
 
             }
         } finally {
             cleanup(col, res);
         }
+        return zahtev;
     }
 
     public void save(ZahtevZaPriznanjePatenta zahtev) throws Exception {
@@ -72,12 +72,10 @@ public class ZahtevZaPriznanjePatentaRepository {
         System.out.println("[INFO] Using defaults.");
         String collectionId = "/db/xml-project/patenti";
         String documentId = zahtev.getBrojPrijave() + ".xml";
-        String filePath = "data/p_input.xml";
 
 
         System.out.println("\t- collection ID: " + collectionId);
         System.out.println("\t- document ID: " + documentId);
-        System.out.println("\t- file path: " + filePath + "\n");
 
         // initialize database driver
         System.out.println("[INFO] Loading driver class: " + conn.driver);
@@ -133,7 +131,7 @@ public class ZahtevZaPriznanjePatentaRepository {
         }
     }
 
-    public List<ZahtevZaPriznanjePatenta> getAll() throws Exception {
+    public ArrayList<ZahtevZaPriznanjePatenta> getAll() throws Exception {
         AuthenticationUtilities.ConnectionProperties conn = AuthenticationUtilities.loadProperties();
 
         // initialize collection and document identifiers
@@ -152,18 +150,18 @@ public class ZahtevZaPriznanjePatentaRepository {
         Collection col = null;
 
         ZahtevZaPriznanjePatenta zahtevZaPriznanjePatenta = null;
-        List<ZahtevZaPriznanjePatenta> zahteviZaPriznanjePatenta;
+        ArrayList<ZahtevZaPriznanjePatenta> zahteviZaPriznanjePatenta;
         int sum;
         try {
             // get the collection
             System.out.println("[INFO] Retrieving the collection: " + collectionId);
             col = DatabaseManager.getCollection(conn.uri + collectionId);
-            //col.setProperty(OutputKeys.INDENT, "yes");
+            col.setProperty(OutputKeys.INDENT, "yes");
 
             XPathQueryService xPathQueryService = (XPathQueryService) col.getService("XPathQueryService", "1.0");
             xPathQueryService.setProperty("indent", "yes");
 
-            String xPathExp = "//Zahtev_za_priznanje_patenta";
+            String xPathExp = "//zahtev_za_priznanje_patenta";
             ResourceSet result = xPathQueryService.query(xPathExp);
             ResourceIterator i = result.getIterator();
             XMLResource res = null;
@@ -175,6 +173,7 @@ public class ZahtevZaPriznanjePatentaRepository {
                 JAXBContext context = JAXBContext.newInstance(ZahtevZaPriznanjePatenta.class);
                 Unmarshaller unmarshaller = context.createUnmarshaller();
                 zahtevZaPriznanjePatenta = (ZahtevZaPriznanjePatenta) unmarshaller.unmarshal(res.getContentAsDOM());
+                System.out.println(zahtevZaPriznanjePatenta.getBrojPrijave());
                 zahteviZaPriznanjePatenta.add(zahtevZaPriznanjePatenta);
             }
         } finally {
