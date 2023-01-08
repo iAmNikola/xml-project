@@ -16,23 +16,24 @@ import java.util.Arrays;
 
 @SpringBootApplication
 public class PatentBackendApplication {
+	@Bean
+	public CorsFilter corsFilter() {
+		CorsConfiguration corsConfiguration = new CorsConfiguration();
+		corsConfiguration.setAllowCredentials(true);
+		corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
+		corsConfiguration.setAllowedHeaders(Arrays.asList("Origin", "Access-Control-Allow-Origin", "Content-Type",
+				"Accept", "Authorization", "Origin, Accept", "X-Requested-With",
+				"Access-Control-Request-Method", "Access-Control-Request-Headers", "responseType"));
+		corsConfiguration.setExposedHeaders(Arrays.asList("Origin", "Content-Type", "Accept", "Authorization",
+				"Access-Control-Allow-Origin", "Access-Control-Allow-Origin", "Access-Control-Allow-Credentials", "responseType"));
+		corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+		UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();
+		urlBasedCorsConfigurationSource.registerCorsConfiguration("/**", corsConfiguration);
+		return new CorsFilter(urlBasedCorsConfigurationSource);
+	}
 
 	public static void main(String[] args) {
-		//System.setProperty("javax.xml.parsers.SAXParserFactory", "com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl");
 		SpringApplication.run(PatentBackendApplication.class, args);
-		/**
-		CreateTestData testData = new CreateTestData();
-		ZahtevZaPriznanjePatentaRepository repository = new ZahtevZaPriznanjePatentaRepository();
-
-		try {
-			testData.writeToFile();
-		} catch (JAXBException e) {
-			throw new RuntimeException(e);
-		} catch (DatatypeConfigurationException e) {
-			throw new RuntimeException(e);
-		}
-		*/
-
 	}
 
 }

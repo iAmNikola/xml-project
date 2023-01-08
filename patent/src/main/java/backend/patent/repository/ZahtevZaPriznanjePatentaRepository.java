@@ -16,8 +16,8 @@ import javax.xml.transform.OutputKeys;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.List;
 
+@SuppressWarnings("deprecation")
 public class ZahtevZaPriznanjePatentaRepository {
 
     public ZahtevZaPriznanjePatenta findById(String id) throws Exception {
@@ -38,8 +38,7 @@ public class ZahtevZaPriznanjePatentaRepository {
         DatabaseManager.registerDatabase(database);
 
         Collection col = null;
-        XMLResource res = null;
-
+        XMLResource res;
         try {
             // get the collection
             col = DatabaseManager.getCollection(conn.uri + collectionId);
@@ -47,9 +46,8 @@ public class ZahtevZaPriznanjePatentaRepository {
 
             res = (XMLResource)col.getResource(documentId);
 
-            if(res == null) {
-                System.out.println("[WARNING] Document '" + documentId + "' can not be found!");
-            } else {
+
+            if(res != null) {
 
                 JAXBContext context = JAXBContext.newInstance("backend.patent.jaxb");
 
@@ -59,7 +57,7 @@ public class ZahtevZaPriznanjePatentaRepository {
 
             }
         } finally {
-            cleanup(col, res);
+            cleanup(col);
         }
         return zahtev;
     }
@@ -68,17 +66,9 @@ public class ZahtevZaPriznanjePatentaRepository {
 
         ConnectionProperties conn = AuthenticationUtilities.loadProperties();
 
-
-        System.out.println("[INFO] Using defaults.");
         String collectionId = "/db/xml-project/patenti";
         String documentId = zahtev.getBrojPrijave() + ".xml";
-
-
-        System.out.println("\t- collection ID: " + collectionId);
-        System.out.println("\t- document ID: " + documentId);
-
-        // initialize database driver
-        System.out.println("[INFO] Loading driver class: " + conn.driver);
+        
         Class<?> cl = Class.forName(conn.driver);
 
         // encapsulation of the database driver functionality
@@ -90,21 +80,13 @@ public class ZahtevZaPriznanjePatentaRepository {
 
         // a collection of Resources stored within an XML database
         Collection col = null;
-        XMLResource res = null;
+        XMLResource res;
         OutputStream os = new ByteArrayOutputStream();
 
         try {
-            System.out.println("[INFO] Retrieving the collection: " + collectionId);
             col = getOrCreateCollection(conn, collectionId);
-
-            /*
-             *  create new XMLResource with a given id
-             *  an id is assigned to the new resource if left empty (null)
-             */
-            System.out.println("[INFO] Inserting the document: " + documentId);
             res = (XMLResource) col.createResource(documentId, XMLResource.RESOURCE_TYPE);
 
-            System.out.println("[INFO] Unmarshalling XML document to an JAXB instance: ");
             JAXBContext context = JAXBContext.newInstance("backend.patent.jaxb");
 
             Marshaller marshaller = context.createMarshaller();
@@ -115,17 +97,14 @@ public class ZahtevZaPriznanjePatentaRepository {
 
             // link the stream to the XML resource
             res.setContent(os);
-            System.out.println("[INFO] Storing the document: " + res.getId());
-
             col.storeResource(res);
-            System.out.println("[INFO] Done.");
 
         } finally {
-            cleanup(col, res);
+            cleanup(col);
         }
     }
 
-    private void cleanup(Collection col, XMLResource res) throws XMLDBException {
+    private void cleanup(Collection col) throws XMLDBException {
         if(col != null) {
             col.close();
         }
@@ -137,9 +116,6 @@ public class ZahtevZaPriznanjePatentaRepository {
         // initialize collection and document identifiers
         String collectionId = "/db/xml-project/patenti";
 
-        System.out.println("\t- collection ID: " + collectionId);
-
-        System.out.println("[INFO] Loading driver class: " + conn.driver);
         Class<?> cl = Class.forName(conn.driver);
 
         Database database = (Database) cl.newInstance();
@@ -149,31 +125,24 @@ public class ZahtevZaPriznanjePatentaRepository {
 
         Collection col = null;
 
-        ZahtevZaPriznanjePatenta zahtevZaPriznanjePatenta = null;
+        ZahtevZaPriznanjePatenta zahtevZaPriznanjePatenta;
         ArrayList<ZahtevZaPriznanjePatenta> zahteviZaPriznanjePatenta;
-        int sum;
         try {
             // get the collection
-            System.out.println("[INFO] Retrieving the collection: " + collectionId);
             col = DatabaseManager.getCollection(conn.uri + collectionId);
             col.setProperty(OutputKeys.INDENT, "yes");
 
             XPathQueryService xPathQueryService = (XPathQueryService) col.getService("XPathQueryService", "1.0");
             xPathQueryService.setProperty("indent", "yes");
 
-            String xPathExp = "//zahtev_za_priznanje_patenta";
-            ResourceSet result = xPathQueryService.query(xPathExp);
-            ResourceIterator i = result.getIterator();
-            XMLResource res = null;
             zahteviZaPriznanjePatenta = new ArrayList<>();
-            while (i.hasMoreResources()) {
-                res = (XMLResource) i.nextResource();
-                //System.out.println(res.getContent());
-
+            String[] resources = col.listResources();
+            XMLResource res;
+            for (String resourceId : resources) {
+                res = (XMLResource) col.getResource(resourceId);
                 JAXBContext context = JAXBContext.newInstance(ZahtevZaPriznanjePatenta.class);
                 Unmarshaller unmarshaller = context.createUnmarshaller();
                 zahtevZaPriznanjePatenta = (ZahtevZaPriznanjePatenta) unmarshaller.unmarshal(res.getContentAsDOM());
-                System.out.println(zahtevZaPriznanjePatenta.getBrojPrijave());
                 zahteviZaPriznanjePatenta.add(zahtevZaPriznanjePatenta);
             }
         } finally {
@@ -194,7 +163,6 @@ public class ZahtevZaPriznanjePatentaRepository {
 
         // create the collection if it does not exist
         if(col == null) {
-
             if(collectionUri.startsWith("/")) {
                 collectionUri = collectionUri.substring(1);
             }
@@ -211,15 +179,12 @@ public class ZahtevZaPriznanjePatentaRepository {
                 Collection startCol = DatabaseManager.getCollection(conn.uri + path, conn.user, conn.password);
 
                 if (startCol == null) {
-
                     // child collection does not exist
-
                     String parentPath = path.substring(0, path.lastIndexOf("/"));
                     Collection parentCol = DatabaseManager.getCollection(conn.uri + parentPath, conn.user, conn.password);
 
                     CollectionManagementService mgt = (CollectionManagementService) parentCol.getService("CollectionManagementService", "1.0");
 
-                    System.out.println("[INFO] Creating the collection: " + pathSegments[pathSegmentOffset]);
                     col = mgt.createCollection(pathSegments[pathSegmentOffset]);
 
                     col.close();
