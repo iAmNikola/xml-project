@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:p1="http://www.foolstech.com/p1"
                 version="2.0">
  <xsl:template match="/">
-  <html>
    <!--docxjs library predefined styles-->
    <style>
     .docx-wrapper {
@@ -1229,6 +1229,5 @@
      </footer>
     </section>
    </div>
-  </html>
  </xsl:template>
 </xsl:stylesheet>
